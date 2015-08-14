@@ -1,3 +1,6 @@
+[![Build Status](https://drone.io/github.com/msfernandes/busine.me/status.png)](https://drone.io/github.com/msfernandes/busine.me/latest)
+[![Code Climate](https://codeclimate.com/github/msfernandes/busine.me/badges/gpa.svg)](https://codeclimate.com/github/msfernandes/busine.me)
+
 # Busine.me
 ---
 
