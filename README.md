@@ -16,6 +16,11 @@ $ pip install -r requirements.txt
 ```
 
 ```
+$ cp settings/databases settings/databases.py
+$ cp settings/security settings/security.py
+```
+
+```
 $ python manage.py makemigrations
 $ python manage.py migrate
 $ python manage.py makemigrations
