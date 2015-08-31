@@ -3,14 +3,15 @@ from settings import databases, security, static, apps
 ROOT_URLCONF = 'settings.urls'
 WSGI_APPLICATION = 'settings.wsgi.application'
 
+# Applications
+INSTALLED_APPS = apps.INSTALLED_APPS
+MIDDLEWARE_CLASSES = apps.MIDDLEWARE_CLASSES
+
 # Security
 SECRET_KEY = security.SECRET_KEY
 DEBUG = security.DEBUG
 ALLOWED_HOSTS = security.ALLOWED_HOSTS
-
-# Applications
-INSTALLED_APPS = apps.INSTALLED_APPS
-MIDDLEWARE_CLASSES = apps.MIDDLEWARE_CLASSES
+AUTH_USER_MODEL = security.AUTH_USER_MODEL
 
 # Static files
 TEMPLATES = static.TEMPLATES
