@@ -66,5 +66,5 @@ coverage_report/
 .sass-cache/
 
 # Busineme migrations
-*/migrations/*.py
+**/migrations/*.py
 !__init__.py
