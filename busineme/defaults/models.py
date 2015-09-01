@@ -7,29 +7,29 @@ class BusinemeModel(models.Model):
         abstract = True
 
     @abstractmethod
-    def save(self, *args, **kwargs):
+    def api_save(self):
         raise NotImplementedError()
 
     @abstractmethod
-    def delete(self):
-        raise NotImplementedError()
-
-    @classmethod
-    @abstractmethod
-    def get(cls, **kwargs):
+    def api_delete(self):
         raise NotImplementedError()
 
     @classmethod
     @abstractmethod
-    def all(cls):
+    def api_get(cls, **kwargs):
         raise NotImplementedError()
 
     @classmethod
     @abstractmethod
-    def filter(cls, **kwargs):
+    def api_all(cls):
         raise NotImplementedError()
 
     @classmethod
     @abstractmethod
-    def filter_startswith(cls, **kwargs):
+    def api_filter(cls, **kwargs):
+        raise NotImplementedError()
+
+    @classmethod
+    @abstractmethod
+    def api_filter_startswith(cls, **kwargs):
         raise NotImplementedError()
