@@ -17,7 +17,7 @@ class BusinemeUser(BusinemeModel, AbstractUser):
 
     def save(self, *args, **kwargs):
         self.username = self.username.lower()
-        super(BusinemeModel, self).save(*args, **kwargs)
+        super(BusinemeUser, self).save(*args, **kwargs)
 
     def __str__(self):
         return "{} - {} {}".format(self.id, self.username, self.email)
