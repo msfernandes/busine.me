@@ -64,4 +64,3 @@ target/
 */settings/security.py
 coverage_report/
 .sass-cache/
-stylesheets/
