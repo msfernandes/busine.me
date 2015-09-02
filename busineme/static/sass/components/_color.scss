@@ -337,6 +337,17 @@ $shades: (
   "transparent":  transparent
 );
 
+$busineme: (
+  "light-blue": #80d5df,
+  "blue":       #2c82c9,
+  "green":      #2cc990,
+  "light-grey": #edede4,
+  "yellow":     #eee657,
+  "orange":     #fcb941,
+  "red":        #ff6963,
+  "dark-grey":  #94846e
+);
+
 $colors: (
   "materialize-red": $materialize-red,
   "red": $red,
@@ -358,7 +369,8 @@ $colors: (
   "brown": $brown,
   "blue-grey": $blue-grey,
   "grey": $grey,
-  "shades": $shades
+  "shades": $shades,
+  "busineme": $busineme
 );
 
 
