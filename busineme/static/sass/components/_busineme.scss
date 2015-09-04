@@ -2,3 +2,8 @@
     @extend .brand-logo;
     font-family: "Lobster";
 }
+
+.login-card {
+    @extend .card;
+    margin-top: 5rem;
+}
