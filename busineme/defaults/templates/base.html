@@ -32,5 +32,13 @@
         // $(".dropdown-button").dropdown();
       });
     </script>
+
+    {% if messages %}
+      {% for message in messages %}
+        <script>
+          Materialize.toast('{{message}}', 4000)
+        </script>
+      {% endfor %}
+    {% endif %}
   </body>
 </html>
