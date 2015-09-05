@@ -34,11 +34,22 @@
     </script>
 
     {% if messages %}
-      {% for message in messages %}
-        <script>
-          Materialize.toast('{{message}}', 4000)
-        </script>
-      {% endfor %}
+      <script>
+        {% for message in messages %}
+          {% if message.tags == 'info' %}
+            var color = 'dark-grey';
+          {% elif message.tags == 'error' %}
+            var color = 'red';
+          {% elif message.tags == 'warning' %}
+            var color = 'orange';
+          {% elif message.tags == 'success' %}
+            var color = 'green';
+          {% else %}
+            var color = 'dark-grey';
+          {% endif %}
+          Materialize.toast('{{message}}', 4000, 'busineme ' + color);
+        {% endfor %}
+      </script>
     {% endif %}
   </body>
 </html>
