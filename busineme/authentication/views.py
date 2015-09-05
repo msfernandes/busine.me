@@ -6,6 +6,7 @@ from django.contrib import messages
 
 
 class LoginView(View):
+    http_method_names = [u'get', u'post']
 
     def get(self, request):
         return render_to_response('login.html',
@@ -30,3 +31,23 @@ class LoginView(View):
             messages.add_message(request, messages.ERROR, "Invalid user")
 
         return response
+
+
+class ForgotPasswordView(View):
+    http_method_names = [u'get', u'post']
+
+    def get(self, request):
+        render_to_response('login.html')
+
+    def post(self, request):
+        render_to_response('login.html')
+
+
+class RegisterUserView(View):
+    http_method_names = [u'get', u'post']
+
+    def get(self, request):
+        render_to_response('login.html')
+
+    def post(self, request):
+        render_to_response('login.html')
