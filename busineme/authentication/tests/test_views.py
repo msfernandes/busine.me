@@ -94,9 +94,3 @@ class TestRegisterUserView(TestCase):
         after = len(BusinemeUser.objects.all())
 
         self.assertGreater(after, before)
-
-    def test_post_invalid_email(self):
-        self.data['email'] = 'invalid'
-        response = self.client.post(reverse('register_user'), data=self.data)
-        self.assertIn("Inactive user.",
-                      str(response.content, 'utf-8'))
