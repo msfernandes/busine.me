@@ -1,8 +1,10 @@
+from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.views.generic import View
+from django.utils.translation import ugettext as _
 from .forms import BusinemeUserForm
 
 
@@ -19,18 +21,17 @@ class LoginView(View):
 
         user = authenticate(username=username, password=password)
 
-        response = render_to_response('login.html',
-                                      context=RequestContext(request))
-
         if user:
             if user.is_active:
                 login(request, user)
-                response = redirect('/')
+                return redirect(reverse('login'))
             else:
-                messages.error(request, "Inactive user.")
+                messages.error(request, _("Inactive user."))
         else:
-            messages.error(request, "Invalid user")
+            messages.error(request, _("Invalid username/password."))
 
+        response = render_to_response('login.html',
+                                      context=RequestContext(request))
         return response
 
 
@@ -53,5 +54,20 @@ class RegisterUserView(View):
 
     def post(self, request):
         form = BusinemeUserForm(request.POST)
-        form.save()
-        return render_to_response('login.html')
+        if form.is_valid():
+            form.save()
+            response = redirect(reverse('login'))
+            username = form.cleaned_data['username']
+            messages.success(
+                request,
+                _("User {} successfully created!".format(username)))
+        else:
+            self.add_message_errors(form, request)
+            response = redirect(reverse('register_user'))
+        return response
+
+    def add_message_errors(self, form, request):
+        for error in form.errors:
+            error_msg = form.errors.get(error).as_text()
+            error_msg = error_msg[2:]
+            messages.error(request, _(error_msg))
