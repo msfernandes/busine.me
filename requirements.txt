@@ -4,3 +4,4 @@ gunicorn==19.3.0
 dj-static==0.0.6
 coveralls==0.5
 flake8==2.4.1
+pylint==1.4.4
