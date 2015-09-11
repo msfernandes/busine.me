@@ -12661,3 +12661,14 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 .login-card {
   margin-top: 5rem;
 }
+
+/* line 11, ../sass/components/_busineme.scss */
+.busineme-hometitle {
+  text-shadow: 0.9px 0.9px black;
+}
+
+/* line 15, ../sass/components/_busineme.scss */
+.busineme-homecontent {
+  padding-top: 3rem;
+  margin-bottom: 3rem;
+}

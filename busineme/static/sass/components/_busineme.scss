@@ -1,9 +1,18 @@
 .busineme-topbar {
-    @extend .brand-logo;
-    font-family: "Lobster";
+  @extend .brand-logo;
+  font-family: "Lobster";
 }
 
 .login-card {
-    @extend .card;
-    margin-top: 5rem;
+  @extend .card;
+  margin-top: 5rem;
+}
+
+.busineme-hometitle {
+  text-shadow: 0.9px 0.9px black;
+}
+
+.busineme-homecontent {
+  padding-top: 3rem;
+  margin-bottom: 3rem;
 }
