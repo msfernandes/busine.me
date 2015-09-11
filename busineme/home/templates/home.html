@@ -21,8 +21,7 @@
     <div class="parallax"><img src="{% static 'images/home_banner1.jpg' %}" width="100%"></div>
   </div>
 
-  <div class="container">
-    <div class="row">
+    <div class="row container">
       <div class="col s3">
         <img src="{% static 'images/home_circle1.png' %}" width="80%" />
       </div>
@@ -35,7 +34,7 @@
       </div>
     </div>
     
-    <div class="row">
+    <div class="row container">
       <div class="col s9">
         <h5 class="busineme-text text-dark-grey">{% trans "Do a check-in" %}</h5>
         <h6 class="busineme-text text-dark-grey">{% trans "A subtitle" %}</h6>
@@ -48,7 +47,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row container">
       <div class="col s3">
         <img src="{% static 'images/home_circle3.png' %}" width="80%" />
       </div>
@@ -60,5 +59,9 @@
         </p>
       </div>
     </div>
-  </div>
+
+    <div class="parallax-container">
+      <div class="parallax"><img src="{% static 'images/home_banner2.jpg' %}" width="100%" /><div>
+    </div>
 {% endblock %}
+
