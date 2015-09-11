@@ -30,7 +30,6 @@
           closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
         });
         // $(".dropdown-button").dropdown();
-        $(".parallax").parallax();
       });
     </script>
 
@@ -41,5 +40,8 @@
         </script>
       {% endfor %}
     {% endif %}
+
+    {% block footer_scripts %}
+    {% endblock %}
   </body>
 </html>
