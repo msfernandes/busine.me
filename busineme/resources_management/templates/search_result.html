@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block main_content %}
+	<div class="row">
+		<h1 class="center" value="Resultado"> Resultado</h1>
+	</div>
+	<div class = "row">
+		<h4 class="center" >Foram encontradas '{{ count_busline }}' linhas</h4>
+		<h4 class="center" >
+		{% if searched_number%}
+			que possuem '{{ searched_number }}' em seus números
+			{%endif %}
+			{% if description and searched_number%}
+				e
+				{%endif %}
+				{% if description%}
+					que passam por '{{ description }}'
+					{%endif %}
+					</h4>
+					<a href="/busca_avancada/" name="busca_avancada" class="left ">Busca Avançada</a>
+				</div>
+				<div class="row">
+					<div class="small-12 large-12 columns">
+						<div class="row collapse prefix-round">
+							{% for busline in buslines %}
+								<form action="/realizar_post/" method="GET">
+									<!-- <div class="panel">
+										<h3> <a href="/perfil_de_linha/{{busline.line_number}}/"  name="busca_avancada"
+										class="left" value="{{busline.line_numeber}}" >{{ busline.line_number }}  </a></h3><br>
+										<p>Rota: {{ busline.description }}
+											<br>
+											{% if user.is_authenticated %}
+												<input type="submit" class="button right round tiny" name='Businar' value="Businar!">
+											{% endif %}
+										</p>
+										
+										<input type="hidden" name="line_number" value="{{busline.line_number}}">
+										<input type="hidden" name="busline_id" value="{{busline.id}}">
+									</div> -->
+
+									<div class="row">
+								        <div>
+								          <div class="card blue-grey darken-1">
+								            <div class="card-content white-text">
+								              <span class="card-title" value="{{busline.line_numeber}}" >{{ busline.line_number }}</span>
+								              <p>Rota: {{ busline.description }}</p>
+								            </div>
+								            <div class="card-action">
+								              <!-- <a href="#">This is a link</a>
+								              <a href="#">This is a link</a> -->
+								            </div>
+								          </div>
+								        </div>
+									</div>
+
+								</form>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			{% endblock main_content %}
