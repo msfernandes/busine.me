@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from configuration.tests import ParserTest
 from importer.parser import Parser
 
@@ -17,7 +16,7 @@ class TestParser(ParserTest):
 
     def test_parser_read_file(self):
         parser = Parser()
-        print ''
+        print('')
         self.assertRaises(IOError, parser.read_file, '')
         self.assertRaises(IOError, parser.read_file, 'away')
         file = 'importer/data/bus_lines.csv'
@@ -25,23 +24,23 @@ class TestParser(ParserTest):
 
     def test_parser_import_bus_lines(self):
         parser = Parser()
-        print ''
+        print('')
         self.assertIsNone(parser.import_bus_lines())
 
     def test_parser_import_terminals_non_existing(self):
         parser = Parser()
-        print ''
+        print('')
         self.assertIsNone(parser.import_terminals())
 
     def test_parser_import_terminal_existing(self):
         parser = Parser()
         parser.import_terminals()
         csv_file = parser.read_file('importer/data/terminals.csv')
-        
+
         for row in csv_file:
             self.assertIsNone(parser.import_terminal(row))
             break
-    
+
     def test_parser_import_data(self):
         parser = Parser()
         self.assertIsNone(parser.import_data())
@@ -53,8 +52,3 @@ class TestParser(ParserTest):
     def test_parser_import_companies(self):
         parser = Parser()
         self.assertIsNone(parser.import_companies())
-
-
-
-
-
