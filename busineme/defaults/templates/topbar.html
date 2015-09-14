@@ -1,4 +1,12 @@
 {% load i18n %}
+
+{% if user.is_authenticated %}
+  <ul id="profile_dropdown" class="dropdown-content">
+    <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>
+    <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+  </ul>
+{% endif %}
+
 <nav>
   <div class="nav-wrapper">
   {% load staticfiles %}
@@ -8,7 +16,10 @@
     </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       {% if user.is_authenticated %}
-        <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>
+        {% load gravatar %}
+        <li><a class="dropdown-button topbar-avatar" href="#!" data-activates="profile_dropdown">
+          <img class="circle responsive-img avatar-border" src="{% gravatar_url user.email 40 %}" alt="avatar">
+        </a></li>
       {% endif %}
     </ul>
     <ul class="side-nav" id="mobile-demo">

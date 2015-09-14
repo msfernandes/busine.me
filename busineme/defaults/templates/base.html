@@ -31,7 +31,8 @@
           menuWidth: 300, // Default is 240
           closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
         });
-        // $(".dropdown-button").dropdown();
+        $('.modal-trigger').leanModal();
+        $(".dropdown-button").dropdown();
       });
     </script>
 
@@ -56,5 +57,8 @@
 
     {% block footer_scripts %}
     {% endblock %}
+
+    {% block modals %}
+    {% endblock modals %}
   </body>
 </html>
