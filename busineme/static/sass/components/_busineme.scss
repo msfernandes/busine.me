@@ -41,3 +41,8 @@
     border-width: 0.2rem;
     border-color: white;
 }
+
+.busineme-footer {
+  @extend .page-footer;
+  margin-top: 0rem !important;
+}

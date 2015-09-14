@@ -3573,13 +3573,13 @@ ul.staggered-list li {
 }
 
 /* line 306, ../sass/components/_global.scss */
-footer.page-footer {
+footer.page-footer, footer.busineme-footer {
   margin-top: 20px;
   padding-top: 20px;
   background-color: #80d5df;
 }
 /* line 311, ../sass/components/_global.scss */
-footer.page-footer .footer-copyright {
+footer.page-footer .footer-copyright, footer.busineme-footer .footer-copyright {
   overflow: hidden;
   height: 50px;
   line-height: 50px;
@@ -8857,7 +8857,7 @@ small {
 }
 
 /* line 43, ../sass/components/_typography.scss */
-.light, footer.page-footer .footer-copyright {
+.light, footer.page-footer .footer-copyright, footer.busineme-footer .footer-copyright {
   font-weight: 300;
 }
 
@@ -12700,4 +12700,9 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   border-style: solid;
   border-width: 0.2rem;
   border-color: white;
+}
+
+/* line 45, ../sass/components/_busineme.scss */
+.busineme-footer {
+  margin-top: 0rem !important;
 }

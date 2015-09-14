@@ -24,6 +24,7 @@
     </ul>
     <ul class="side-nav" id="mobile-demo">
       {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
         <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>
       {% endif %}
     </ul>

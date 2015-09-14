@@ -15,10 +15,8 @@
   <body>
   {% include 'topbar.html' %}
 
-  <div class="busineme-content">
   {% block main_content %}
   {% endblock main_content %}
-  </div>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
@@ -33,6 +31,7 @@
         });
         $('.modal-trigger').leanModal();
         $(".dropdown-button").dropdown();
+        $(".parallax").parallax();
       });
     </script>
 
@@ -55,10 +54,14 @@
       </script>
     {% endif %}
 
+
     {% block footer_scripts %}
     {% endblock %}
 
     {% block modals %}
     {% endblock modals %}
+
+    {% include "footer.html" %}
+
   </body>
 </html>
