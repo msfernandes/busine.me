@@ -22,6 +22,6 @@ DJANGO_APPS = (
 
 DJANGO_PLUGINS = ('django_gravatar',)
 
-BUSINEME_APPS = ('defaults', 'importer', 'authentication', 'home')
+BUSINEME_APPS = ('defaults', 'importer', 'authentication', 'home', 'core')
 
 INSTALLED_APPS = DJANGO_APPS + DJANGO_PLUGINS + BUSINEME_APPS

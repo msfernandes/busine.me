@@ -3299,7 +3299,7 @@ ul li {
 }
 
 /* line 65, ../sass/components/_global.scss */
-.z-depth-1, nav, .card-panel, .card, .login-card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+.z-depth-1, nav, .card-panel, .card, .login-card, .busline-card, .search-card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -9013,7 +9013,7 @@ small {
 }
 
 /* line 12, ../sass/components/_cards.scss */
-.card, .login-card {
+.card, .login-card, .busline-card, .search-card {
   position: relative;
   overflow: hidden;
   margin: 0.5rem 0 1rem 0;
@@ -9022,76 +9022,76 @@ small {
   border-radius: 2px;
 }
 /* line 22, ../sass/components/_cards.scss */
-.card .card-title, .login-card .card-title {
+.card .card-title, .login-card .card-title, .busline-card .card-title, .search-card .card-title {
   color: #fff;
   font-size: 24px;
   font-weight: 300;
 }
 /* line 26, ../sass/components/_cards.scss */
-.card .card-title.activator, .login-card .card-title.activator {
+.card .card-title.activator, .login-card .card-title.activator, .busline-card .card-title.activator, .search-card .card-title.activator {
   cursor: pointer;
 }
 /* line 32, ../sass/components/_cards.scss */
-.card.small, .small.login-card, .card.medium, .medium.login-card, .card.large, .large.login-card {
+.card.small, .small.login-card, .small.busline-card, .small.search-card, .card.medium, .medium.login-card, .medium.busline-card, .medium.search-card, .card.large, .large.login-card, .large.busline-card, .large.search-card {
   position: relative;
 }
 /* line 35, ../sass/components/_cards.scss */
-.card.small .card-image, .small.login-card .card-image, .card.medium .card-image, .medium.login-card .card-image, .card.large .card-image, .large.login-card .card-image {
+.card.small .card-image, .small.login-card .card-image, .small.busline-card .card-image, .small.search-card .card-image, .card.medium .card-image, .medium.login-card .card-image, .medium.busline-card .card-image, .medium.search-card .card-image, .card.large .card-image, .large.login-card .card-image, .large.busline-card .card-image, .large.search-card .card-image {
   overflow: hidden;
 }
 /* line 38, ../sass/components/_cards.scss */
-.card.small .card-content, .small.login-card .card-content, .card.medium .card-content, .medium.login-card .card-content, .card.large .card-content, .large.login-card .card-content {
+.card.small .card-content, .small.login-card .card-content, .small.busline-card .card-content, .small.search-card .card-content, .card.medium .card-content, .medium.login-card .card-content, .medium.busline-card .card-content, .medium.search-card .card-content, .card.large .card-content, .large.login-card .card-content, .large.busline-card .card-content, .large.search-card .card-content {
   overflow: hidden;
 }
 /* line 41, ../sass/components/_cards.scss */
-.card.small .card-action, .small.login-card .card-action, .card.medium .card-action, .medium.login-card .card-action, .card.large .card-action, .large.login-card .card-action {
+.card.small .card-action, .small.login-card .card-action, .small.busline-card .card-action, .small.search-card .card-action, .card.medium .card-action, .medium.login-card .card-action, .medium.busline-card .card-action, .medium.search-card .card-action, .card.large .card-action, .large.login-card .card-action, .large.busline-card .card-action, .large.search-card .card-action {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
 }
 /* line 49, ../sass/components/_cards.scss */
-.card.small, .small.login-card {
+.card.small, .small.login-card, .small.busline-card, .small.search-card {
   height: 300px;
 }
 /* line 52, ../sass/components/_cards.scss */
-.card.small .card-image, .small.login-card .card-image {
+.card.small .card-image, .small.login-card .card-image, .small.busline-card .card-image, .small.search-card .card-image {
   height: 150px;
 }
 /* line 55, ../sass/components/_cards.scss */
-.card.small .card-content, .small.login-card .card-content {
+.card.small .card-content, .small.login-card .card-content, .small.busline-card .card-content, .small.search-card .card-content {
   height: 150px;
 }
 /* line 61, ../sass/components/_cards.scss */
-.card.medium, .medium.login-card {
+.card.medium, .medium.login-card, .medium.busline-card, .medium.search-card {
   height: 400px;
 }
 /* line 64, ../sass/components/_cards.scss */
-.card.medium .card-image, .medium.login-card .card-image {
+.card.medium .card-image, .medium.login-card .card-image, .medium.busline-card .card-image, .medium.search-card .card-image {
   height: 250px;
 }
 /* line 67, ../sass/components/_cards.scss */
-.card.medium .card-content, .medium.login-card .card-content {
+.card.medium .card-content, .medium.login-card .card-content, .medium.busline-card .card-content, .medium.search-card .card-content {
   height: 150px;
 }
 /* line 72, ../sass/components/_cards.scss */
-.card.large, .large.login-card {
+.card.large, .large.login-card, .large.busline-card, .large.search-card {
   height: 500px;
 }
 /* line 75, ../sass/components/_cards.scss */
-.card.large .card-image, .large.login-card .card-image {
+.card.large .card-image, .large.login-card .card-image, .large.busline-card .card-image, .large.search-card .card-image {
   height: 330px;
 }
 /* line 78, ../sass/components/_cards.scss */
-.card.large .card-content, .large.login-card .card-content {
+.card.large .card-content, .large.login-card .card-content, .large.busline-card .card-content, .large.search-card .card-content {
   height: 170px;
 }
 /* line 84, ../sass/components/_cards.scss */
-.card .card-image, .login-card .card-image {
+.card .card-image, .login-card .card-image, .busline-card .card-image, .search-card .card-image {
   position: relative;
 }
 /* line 88, ../sass/components/_cards.scss */
-.card .card-image img, .login-card .card-image img {
+.card .card-image img, .login-card .card-image img, .busline-card .card-image img, .search-card .card-image img {
   border-radius: 2px 2px 0 0;
   position: relative;
   left: 0;
@@ -9101,33 +9101,33 @@ small {
   width: 100%;
 }
 /* line 98, ../sass/components/_cards.scss */
-.card .card-image .card-title, .login-card .card-image .card-title {
+.card .card-image .card-title, .login-card .card-image .card-title, .busline-card .card-image .card-title, .search-card .card-image .card-title {
   position: absolute;
   bottom: 0;
   left: 0;
   padding: 20px;
 }
 /* line 107, ../sass/components/_cards.scss */
-.card .card-content, .login-card .card-content {
+.card .card-content, .login-card .card-content, .busline-card .card-content, .search-card .card-content {
   padding: 20px;
   border-radius: 0 0 2px 2px;
 }
 /* line 112, ../sass/components/_cards.scss */
-.card .card-content p, .login-card .card-content p {
+.card .card-content p, .login-card .card-content p, .busline-card .card-content p, .search-card .card-content p {
   margin: 0;
   color: inherit;
 }
 /* line 116, ../sass/components/_cards.scss */
-.card .card-content .card-title, .login-card .card-content .card-title {
+.card .card-content .card-title, .login-card .card-content .card-title, .busline-card .card-content .card-title, .search-card .card-content .card-title {
   line-height: 48px;
 }
 /* line 121, ../sass/components/_cards.scss */
-.card .card-action, .login-card .card-action {
+.card .card-action, .login-card .card-action, .busline-card .card-action, .search-card .card-action {
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   padding: 20px;
 }
 /* line 125, ../sass/components/_cards.scss */
-.card .card-action a, .login-card .card-action a {
+.card .card-action a, .login-card .card-action a, .busline-card .card-action a, .search-card .card-action a {
   color: #ffab40;
   margin-right: 20px;
   -webkit-transition: color 0.3s ease;
@@ -9138,11 +9138,11 @@ small {
   text-transform: uppercase;
 }
 /* line 131, ../sass/components/_cards.scss */
-.card .card-action a:hover, .login-card .card-action a:hover {
+.card .card-action a:hover, .login-card .card-action a:hover, .busline-card .card-action a:hover, .search-card .card-action a:hover {
   color: #ffd8a6;
 }
 /* line 135, ../sass/components/_cards.scss */
-.card .card-reveal, .login-card .card-reveal {
+.card .card-reveal, .login-card .card-reveal, .busline-card .card-reveal, .search-card .card-reveal {
   padding: 20px;
   position: absolute;
   background-color: #fff;
@@ -9154,7 +9154,7 @@ small {
   display: none;
 }
 /* line 146, ../sass/components/_cards.scss */
-.card .card-reveal .card-title, .login-card .card-reveal .card-title {
+.card .card-reveal .card-title, .login-card .card-reveal .card-title, .busline-card .card-reveal .card-title, .search-card .card-reveal .card-title {
   cursor: pointer;
   display: block;
 }
@@ -12667,42 +12667,48 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
   margin-top: 5rem;
 }
 
-/* line 15, ../sass/components/_busineme.scss */
+/* line 19, ../sass/components/_busineme.scss */
+.search-card {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+
+/* line 25, ../sass/components/_busineme.scss */
 .busineme-hometitle {
   text-shadow: 0.9px 0.9px black;
 }
 
-/* line 19, ../sass/components/_busineme.scss */
+/* line 29, ../sass/components/_busineme.scss */
 .busineme-homecontent {
   padding-top: 3rem;
   margin-bottom: 3rem;
 }
 
-/* line 24, ../sass/components/_busineme.scss */
+/* line 34, ../sass/components/_busineme.scss */
 .profile-avatar {
   padding-top: 2rem;
   margin-bottom: 2rem;
 }
 
-/* line 30, ../sass/components/_busineme.scss */
+/* line 40, ../sass/components/_busineme.scss */
 .social-card {
   padding-bottom: 0.7rem;
 }
 
-/* line 34, ../sass/components/_busineme.scss */
+/* line 44, ../sass/components/_busineme.scss */
 .topbar-avatar {
   padding-top: 0.8rem;
   padding-right: 2rem;
 }
 
-/* line 39, ../sass/components/_busineme.scss */
+/* line 49, ../sass/components/_busineme.scss */
 .avatar-border {
   border-style: solid;
   border-width: 0.2rem;
   border-color: white;
 }
 
-/* line 45, ../sass/components/_busineme.scss */
+/* line 55, ../sass/components/_busineme.scss */
 .busineme-footer {
   margin-top: 0rem !important;
 }

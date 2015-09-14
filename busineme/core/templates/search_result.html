@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Results{% endblock %}
+
+{% block main_content %}
+	<div class="busineme-content">
+		<div class="container">
+			<p class="flow-text center busineme-text text-blue">{% trans "Results" %}</p>
+			<p class="flow-text center">{% trans "We found " %}{{count_busline}}{% trans " bus lines!" %}</p>
+		</div>
+		<div class="container">
+			<div class="row">
+				{% for busline in buslines %}
+					<div class="col s12 m6">
+						<div class="card hoverable">
+							<div class="card-content">
+								<span class="card-title activator busineme-text text-blue">#{{busline.line_number}}
+								<i class="material-icons right">more_vert</i></span>
+								<hr>
+								<ul class="collection">
+									<li class="collection-item truncate">{{busline.description}}</li>
+									<li class="collection-item truncate">{{busline.via}}</li>
+									<li class="collection-item">{{busline.route_size}} km</li>
+								</ul>
+							</div>
+							<div class="card-reveal">
+								<span class="card-title busineme-text text-dark-grey">{% trans "Terminals:" %}<i class="material-icons right">close</i></span>
+								<ul class="collection">
+									{% for terminal in busline.terminals.all %}
+										<li class="collection-item">{{terminal|title}}</li>
+									{% endfor %}
+								</ul>
+								<hr>
+								<ul class="collection">
+									<li class="collection-item"><b>{% trans "Fee:" %}</b> R$ {{busline.fee}}</li>
+									<li class="collection-item"><b>{% trans "Company:" %}</b> {{busline.company|title}}</li>
+								</ul>
+							</div>
+							<div class="card-action right-align">
+								<a href="#">{% trans 'See more...' %}</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock main_content %}
