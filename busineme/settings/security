@@ -4,3 +4,5 @@ SECRET_KEY = 'qwerty'
 DEBUG = True
 ALLOWED_HOSTS = []
 AUTH_USER_MODEL = 'authentication.BusinemeUser'
+
+LOGIN_URL = '/auth/login/'
