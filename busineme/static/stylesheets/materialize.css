@@ -4041,7 +4041,7 @@ span.badge.new:after {
 }
 
 /* line 679, ../sass/components/_global.scss */
-.center, .center-align {
+.center, .profile-avatar, .center-align {
   text-align: center;
 }
 
@@ -8606,7 +8606,7 @@ nav .brand-logo, nav .busineme-topbar {
   white-space: nowrap;
 }
 /* line 50, ../sass/components/_navbar.scss */
-nav .brand-logo.center, nav .center.busineme-topbar {
+nav .brand-logo.center, nav .center.busineme-topbar, nav .busineme-topbar.profile-avatar, nav .brand-logo.profile-avatar {
   left: 50%;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
@@ -12658,17 +12658,33 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 }
 
 /* line 6, ../sass/components/_busineme.scss */
+.busineme-content {
+  padding-top: 2rem;
+}
+
+/* line 10, ../sass/components/_busineme.scss */
 .login-card {
   margin-top: 5rem;
 }
 
-/* line 11, ../sass/components/_busineme.scss */
+/* line 15, ../sass/components/_busineme.scss */
 .busineme-hometitle {
   text-shadow: 0.9px 0.9px black;
 }
 
-/* line 15, ../sass/components/_busineme.scss */
+/* line 19, ../sass/components/_busineme.scss */
 .busineme-homecontent {
   padding-top: 3rem;
   margin-bottom: 3rem;
+}
+
+/* line 24, ../sass/components/_busineme.scss */
+.profile-avatar {
+  padding-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* line 30, ../sass/components/_busineme.scss */
+.social-card {
+  padding-bottom: 2rem;
 }

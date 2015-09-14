@@ -1,3 +1,4 @@
+{% load i18n %}
 <nav>
   <div class="nav-wrapper">
   {% load staticfiles %}
@@ -6,10 +7,14 @@
       <i class="material-icons">menu</i>
     </a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="#">Perfil</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>
+      {% endif %}
     </ul>
     <ul class="side-nav" id="mobile-demo">
-      <li><a href="#">Perfil</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>
+      {% endif %}
     </ul>
   </div>
 </nav>

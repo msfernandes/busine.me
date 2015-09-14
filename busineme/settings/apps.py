@@ -20,7 +20,7 @@ DJANGO_APPS = (
     'django.contrib.staticfiles'
 )
 
-DJANGO_PLUGINS = ()
+DJANGO_PLUGINS = ('django_gravatar',)
 
 BUSINEME_APPS = ('defaults', 'importer', 'authentication', 'home')
 

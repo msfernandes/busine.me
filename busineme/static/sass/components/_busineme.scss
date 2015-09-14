@@ -3,6 +3,10 @@
   font-family: "Lobster";
 }
 
+.busineme-content {
+    padding-top: 2rem;
+}
+
 .login-card {
   @extend .card;
   margin-top: 5rem;
@@ -15,4 +19,14 @@
 .busineme-homecontent {
   padding-top: 3rem;
   margin-bottom: 3rem;
+}
+
+.profile-avatar {
+    @extend .center;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-card {
+    padding-bottom: 2rem;
 }

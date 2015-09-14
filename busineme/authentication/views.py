@@ -45,6 +45,13 @@ class ForgotPasswordView(View):
         return render_to_response('login.html')
 
 
+class UserProfileView(View):
+    http_method_names = [u'get', u'post']
+
+    def get(self, request):
+        return render_to_response('profile.html',
+                                  context=RequestContext(request))
+
 class RegisterUserView(View):
     http_method_names = [u'get', u'post']
 
