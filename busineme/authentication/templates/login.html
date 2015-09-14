@@ -1,27 +1,33 @@
 {% extends "base.html" %}
 {% block main_content %}
+{% load i18n %}
   <div class="container">
     <div class="row">
-      <div class="col s12 offset-m2 m8 offset-l3 l6 center">
-        <div class="login-card hoverable">
-          <div class="card-content">
-            <span class="card-title blue-text">Login</span>
-            <div class="input-field">
-              <i class="material-icons prefix">account_circle</i>
-              <input  id="username" name="username" type="text" class="validate">
-              <label for="username">Username</label>
+      <div class="col s12 offset-m2 m8 offset-l3 l6">
+        <form action="{% url 'login' %}" method="POST">
+          {% csrf_token %}
+          <input type="hidden" name="next_url" value="{{next_url}}">
+          <div class="login-card hoverable center-align">
+            <div class="card-content">
+              <span class="card-title busineme-text text-light-blue">{% trans 'Login' %}</span>
+              <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <input  id="username" name="username" type="text" class="validate">
+                <label for="username">{% trans 'Username' %}</label>
+              </div>
+              <div class="input-field">
+                <i class="material-icons prefix">lock</i>
+                <input  id="password" name="password" type="password" class="validate">
+                <label for="password">{% trans 'Password' %}</label>
+                <p class="center"><small><a href="{% url 'forgot_password' %}">{% trans 'Forgot password?' %}</a></small></p>
+                <button class="btn waves-effect waves-light" type="submit'">{% trans 'Enter' %}</button>
+              </div>
             </div>
-            <div class="input-field">
-              <i class="material-icons prefix">lock</i>
-              <input  id="password" name="password" type="password" class="validate">
-              <label for="password">Password</label>
+            <div class="card-action right-align">
+              <a href="{% url 'register_user' %}">{% trans 'Sign Up' %}</a>
             </div>
           </div>
-          <div class="card-action">
-            <button class="btn waves-effect waves-light">Entrar</button>
-            <a href="#" class="waves-effect waves-blue btn-flat">Cadastre-se</a>
-          </div>
-        </div>
+        </form>
       </div>
     </div>
   </div>

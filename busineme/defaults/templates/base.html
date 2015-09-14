@@ -15,8 +15,10 @@
   <body>
   {% include 'topbar.html' %}
 
+  <div class="busineme-content">
   {% block main_content %}
   {% endblock main_content %}
+  </div>
 
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
@@ -29,19 +31,34 @@
           menuWidth: 300, // Default is 240
           closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
         });
-        // $(".dropdown-button").dropdown();
+        $('.modal-trigger').leanModal();
+        $(".dropdown-button").dropdown();
       });
     </script>
 
     {% if messages %}
-      {% for message in messages %}
-        <script>
-          Materialize.toast('{{message}}', 4000)
-        </script>
-      {% endfor %}
+      <script>
+        {% for message in messages %}
+          {% if message.tags == 'info' %}
+            var color = 'dark-grey';
+          {% elif message.tags == 'error' %}
+            var color = 'red';
+          {% elif message.tags == 'warning' %}
+            var color = 'orange';
+          {% elif message.tags == 'success' %}
+            var color = 'green';
+          {% else %}
+            var color = 'dark-grey';
+          {% endif %}
+          Materialize.toast('{{message}}', 4000, 'busineme ' + color);
+        {% endfor %}
+      </script>
     {% endif %}
 
     {% block footer_scripts %}
     {% endblock %}
+
+    {% block modals %}
+    {% endblock modals %}
   </body>
 </html>
