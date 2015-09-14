@@ -19,7 +19,7 @@ class LoginView(View):
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']
-        next_url = request.POST.get('next_url')
+        next_url = request.POST['next_url']
 
         user = authenticate(username=username, password=password)
 
@@ -29,7 +29,7 @@ class LoginView(View):
             if user.is_active:
                 login(request, user)
                 messages.success(request, _("You are logged in"))
-                if next_url:
+                if len(next_url) != 0:
                     response = redirect(next_url)
                 else:
                     response = redirect('/')
