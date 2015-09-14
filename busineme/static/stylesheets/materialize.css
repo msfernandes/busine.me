@@ -12686,5 +12686,18 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 
 /* line 30, ../sass/components/_busineme.scss */
 .social-card {
-  padding-bottom: 2rem;
+  padding-bottom: 0.7rem;
+}
+
+/* line 34, ../sass/components/_busineme.scss */
+.topbar-avatar {
+  padding-top: 0.8rem;
+  padding-right: 2rem;
+}
+
+/* line 39, ../sass/components/_busineme.scss */
+.avatar-border {
+  border-style: solid;
+  border-width: 0.2rem;
+  border-color: white;
 }

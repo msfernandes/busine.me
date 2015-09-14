@@ -30,8 +30,8 @@
             </div>
           </form>
           <div class="card-action">
-            <p class="center-align"><button class="btn">{% trans 'Change Password' %}</button></p>
-            <p class="center-align"><button class="btn busineme red">{% trans 'Deactivate Account' %}</button></p>
+            <p class="center-align"><a href="#change_password_modal" class="btn white-text modal-trigger">{% trans 'Change Password' %}</a></p>
+            <p class="center-align"><a href="#deactivate_account_modal" class="btn busineme red white-text modal-trigger">{% trans 'Deactivate Account' %}</a></p>
           </div>
         </div>
       </div>
@@ -42,9 +42,10 @@
             {% load gravatar %}
             <div class="profile-avatar">
               <p><img class="responsive-img" src="{% gravatar_url user.email 200 %}" alt="avatar"></p>
-              <a href="" class="btn">{% trans 'Change Avatar'%}</a>
+              <a href="https://en.gravatar.com/emails/" target="_blank" class="btn">{% trans 'Change Avatar'%}</a>
+              <p><small>{% trans "We use the Gravatar to manage user's avatar" %}</small></p>
             </div>
-            <p class="flow-text">{% trans 'Rank Position:' %} <b>Position</b></p>
+            <p class="flow-text">{% trans 'Rank Position:' %} <b>{{user.rank.description}}</b></p>
             <p class="flow-text">{% trans 'Pontuation:' %} {{user.pontuation}}/100</p>
           </div>
         </div>
@@ -52,3 +53,47 @@
     </div>
   </div>
 {% endblock main_content %}
+
+{% block modals %}
+  <div id="change_password_modal" class="modal">
+    <form action="{% url 'update_password' %}" method="POST">
+      {% csrf_token %}
+      <div class="modal-content">
+        <span class="flow-text busineme-text text-light-blue">{% trans 'Change Password' %}</span>
+        <div class="center">
+          <div class="input-field">
+            <i class="material-icons prefix">lock</i>
+            <input  id="password" name="password" type="password" class="validate" required>
+            <label for="password">{% trans 'Password' %}</label>
+          </div>
+          <div class="input-field">
+            <i class="material-icons prefix">lock</i>
+            <input  id="confirm_password" name="confirm_password" type="password" class="validate" required>
+            <label for="confirm_password">{% trans 'Confirm password' %}</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class=" modal-action modal-close waves-effect waves-green btn-flat">{% trans "Update" %}</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="deactivate_account_modal" class="modal">
+    <form action="{% url 'deactivate_user' %}" method="POST">
+      {% csrf_token %}
+      <div class="modal-content">
+        <span class="flow-text busineme-text text-light-blue">{% trans 'Are you sure?' %}</span>
+        <p>{% trans "It's unfortunate that you want to deactivate your account. Can you tell us the reason?" %}</p>
+        <div class="input-field">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="reason" maxlength="255" name="reason" class="materialize-textarea"></textarea>
+          <label for="reason">Reason</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class=" modal-action modal-close waves-effect waves-green btn busineme red">{% trans "Deactivate" %}</button>
+      </div>
+    </form>
+  </div>
+{% endblock modals %}
