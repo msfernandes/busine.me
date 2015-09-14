@@ -1,21 +1,38 @@
+{% load i18n %}
+
+{% if user.is_authenticated %}
+  <ul id="profile_dropdown" class="dropdown-content">
+    <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>
+    <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+  </ul>
+{% endif %}
+
 <nav>
   <div class="nav-wrapper">
-    {% load staticfiles %}
-    <a href="#" class="busineme-topbar center">Busine.me</a>
+  {% load staticfiles %}
+    <a href="/" class="busineme-topbar center">Busine.me</a>
     <a href="#" data-activates="mobile-demo" class="button-collapse" id="menu-topbar">
       <i class="material-icons">menu</i>
     </a>
+
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="sass.html"><i class="material-icons left">search</i>{% trans "Search Lines" %}</a></li>
+    </ul>
+
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="#">Perfil</a></li>
+      {% if user.is_authenticated %}
+        <li><a class="dropdown-button" href="#!" data-activates="profile_dropdown">{% trans "Hi, " %}{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">{% trans 'Sign In' %}</a></li>
+        <li><a class="active" href="{% url 'register_user' %}">{% trans 'Sign Up' %}</a></li>
+      {% endif %}
     </ul>
     <ul class="side-nav" id="mobile-demo">
-      <li><a href="#">Perfil</a></li>
+      <li><a href="sass.html">{% trans "Search Lines" %}</a></li>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
+        <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>
+      {% endif %}
     </ul>
-    <form action="/search/busline/" method="GET">
-        <div class="input-field">
-          <input id="search" name="busline" type="search" required>
-          <label for="search"><i class="material-icons">search</i></label>
-        </div>
-    </form>
   </div>
 </nav>

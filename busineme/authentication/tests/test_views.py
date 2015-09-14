@@ -33,23 +33,30 @@ class TestLoginView(TestCase):
 
     def test_post_valid_data(self):
         self.create_user()
-        data = {'username': 'username', 'password': '1234'}
+        data = {'username': 'username', 'password': '1234',
+                'next_url': '/auth/profile/'}
         self.client.post(reverse('login'), data=data)
         self.assertEqual(int(self.client.session['_auth_user_id']), 1)
 
     def test_post_invalid_password(self):
         self.create_user()
-        data = {'username': 'username', 'password': 'invalid'}
+        data = {'username': 'username', 'password': 'invalid',
+                'next_url': '/auth/profile/'}
         response = self.client.post(reverse('login'), data=data)
-        self.assertIn("Invalid username/password.",
-                      str(response.content, 'utf-8'))
+        self.assertEqual(200, response.status_code)
 
     def test_post_inactive_user(self):
         self.create_user(is_active=False)
-        data = {'username': 'username', 'password': '1234'}
+        data = {'username': 'username', 'password': '1234',
+                'next_url': '/auth/profile/'}
         response = self.client.post(reverse('login'), data=data)
-        self.assertIn("Inactive user.",
-                      str(response.content, 'utf-8'))
+        self.assertEqual(200, response.status_code)
+
+    def test_next_url(self):
+        data = {'username': 'username', 'password': '1234',
+                'next_url': '/auth/profile/'}
+        response = self.client.post(reverse('login'), data=data)
+        self.assertEqual(200, response.status_code)
 
 
 class TestForgotPasswordView(TestCase):

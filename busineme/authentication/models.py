@@ -14,6 +14,7 @@ class RankPosition(BusinemeModel):
 class BusinemeUser(BusinemeModel, AbstractUser):
     pontuation = models.IntegerField(default=0)
     rank = models.ForeignKey(RankPosition, null=True)
+    deactivation_reason = models.CharField(max_length=255, null=True)
 
     def save(self, *args, **kwargs):
         self.username = self.username.lower()

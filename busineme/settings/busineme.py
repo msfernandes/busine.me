@@ -12,6 +12,7 @@ SECRET_KEY = security.SECRET_KEY
 DEBUG = security.DEBUG
 ALLOWED_HOSTS = security.ALLOWED_HOSTS
 AUTH_USER_MODEL = security.AUTH_USER_MODEL
+LOGIN_URL = security.LOGIN_URL
 
 # Static files
 TEMPLATES = static.TEMPLATES
