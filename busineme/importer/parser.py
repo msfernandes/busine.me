@@ -3,7 +3,7 @@
 import csv
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
-from resources_management.models import BusinemeBusline, BusinemeTerminal, BusinemeCompany
+from core.models import BusinemeBusline, BusinemeTerminal, BusinemeCompany
 
 
 class Parser(object):

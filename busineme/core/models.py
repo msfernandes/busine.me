@@ -4,7 +4,7 @@ from django.db import models
 
 class BusinemeBusline(BusinemeModel):
 
-    """Busline Model."""
+    """BusinemeBusline Model."""
 
     line_number = models.CharField(max_length=5, unique=True)
     description = models.CharField(max_length=255)
