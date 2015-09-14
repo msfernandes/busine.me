@@ -14,15 +14,21 @@
     <a href="#" data-activates="mobile-demo" class="button-collapse" id="menu-topbar">
       <i class="material-icons">menu</i>
     </a>
+
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a href="sass.html"><i class="material-icons left">search</i>{% trans "Search Lines" %}</a></li>
+    </ul>
+
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       {% if user.is_authenticated %}
-        {% load gravatar %}
-        <li><a class="dropdown-button topbar-avatar" href="#!" data-activates="profile_dropdown">
-          <img class="circle responsive-img avatar-border" src="{% gravatar_url user.email 40 %}" alt="avatar">
-        </a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="profile_dropdown">{% trans "Hi, " %}{{user.username}}<i class="material-icons right">arrow_drop_down</i></a></li>
+      {% else %}
+        <li><a href="{% url 'login' %}">{% trans 'Sign In' %}</a></li>
+        <li><a class="active" href="{% url 'register_user' %}">{% trans 'Sign Up' %}</a></li>
       {% endif %}
     </ul>
     <ul class="side-nav" id="mobile-demo">
+      <li><a href="sass.html">{% trans "Search Lines" %}</a></li>
       {% if user.is_authenticated %}
         <li><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></li>
         <li><a href="{% url 'user_profile' %}">{% trans 'Profile' %}</a></li>

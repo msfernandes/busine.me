@@ -12,33 +12,31 @@ class LoginView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        next_url = request.GET.get('next')
-        return render_to_response('login.html', locals(),
-                                  context_instance=RequestContext(request))
+        if request.user.is_authenticated():
+            response = redirect('/')
+        else:
+            response = render_to_response(
+                'login.html', context_instance=RequestContext(request))
+        return response
 
     def post(self, request):
         username = request.POST['username']
         password = request.POST['password']
-        next_url = request.POST['next_url']
 
         user = authenticate(username=username, password=password)
 
-        response = render_to_response('login.html',
-                                      context=RequestContext(request))
         if user:
             if user.is_active:
                 login(request, user)
                 messages.success(request, _("You are logged in"))
-                if len(next_url) != 0:
-                    response = redirect(next_url)
-                else:
-                    response = redirect('/')
+                return redirect('/')
             else:
                 messages.error(request, _("Inactive user."))
         else:
             messages.error(request, _("Invalid username/password."))
 
-        return response
+        return render_to_response('login.html',
+                                  context=RequestContext(request))
 
 
 class LogoutView(View):
