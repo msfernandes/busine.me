@@ -4,7 +4,7 @@ from django.views.generic import View
 from .models import BusinemeBusline
 
 
-class BuslineSearchView(View):
+class BuslineSearchResultView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):

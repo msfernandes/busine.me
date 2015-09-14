@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Search" %}{% endblock %}
+{% block main_content %}
+  <div class="container">
+    <div class="search-card">
+      <form action="{% url 'search_results' %}" method="GET">
+        <div class="card-content">
+          <span class="card-title busineme-text text-blue">{% trans "Search Buslines" %}</span>
+          <div class="input-field">
+            <i class="material-icons prefix">directions_bus</i>
+            <input  id="busline" name="busline" type="text" class="validate">
+            <label for="busline">{% trans 'Busline' %}</label>
+          </div>
+        </div>
+        <div class="card-action center">
+          <button class="btn"><i class="material-icons left">search</i>{% trans "Search" %}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock  %}
