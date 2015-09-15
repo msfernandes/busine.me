@@ -2,17 +2,17 @@ from defaults.models import BusinemeModel
 from django.db import models
 
 
-class BusinemeBusline(BusinemeModel):
+class Busline(BusinemeModel):
 
-    """BusinemeBusline Model."""
+    """Busline Model."""
 
     line_number = models.CharField(max_length=5, unique=True)
     description = models.CharField(max_length=255)
     via = models.CharField(max_length=255)
     route_size = models.FloatField()  # unit: kilometers
     fee = models.DecimalField(decimal_places=2, max_digits=4)  # unit: BRL (R$)
-    company = models.ForeignKey('BusinemeCompany', null=True)
-    terminals = models.ManyToManyField('BusinemeTerminal')
+    company = models.ForeignKey('Company', null=True)
+    terminals = models.ManyToManyField('Terminal')
 
     def __str__(self):
         return "{} - {}".format(self.line_number, self.description)
@@ -28,7 +28,7 @@ class BusinemeBusline(BusinemeModel):
         return objects
 
 
-class BusinemeCompany(BusinemeModel):
+class Company(BusinemeModel):
 
     """Company Model."""
 
@@ -38,7 +38,7 @@ class BusinemeCompany(BusinemeModel):
         return "{}".format(self.name)
 
 
-class BusinemeTerminal(BusinemeModel):
+class Terminal(BusinemeModel):
 
     """Terminal Model."""
 
