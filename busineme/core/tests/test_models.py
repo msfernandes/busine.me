@@ -1,18 +1,18 @@
 from django.test import TestCase
-from ..models import BusinemeBusline
-from ..models import BusinemeTerminal
+from ..models import Busline
+from ..models import Terminal
 
 
-class TestBusinemeBusline(TestCase):
+class TestBusline(TestCase):
 
     def setUp(self):
-        self.busline = BusinemeBusline()
+        self.busline = Busline()
 
         self.busline.line_number = '001'
         self.busline.description = 'route'
         self.busline.route_size = 0.1
         self.busline.fee = 3.50
-        self.terminal = BusinemeTerminal(description="terminal")
+        self.terminal = Terminal(description="terminal")
         self.terminal.save()
         self.busline.save()
         self.busline.terminals.add(self.terminal)

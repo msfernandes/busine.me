@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic import View
-from .models import BusinemeBusline
+from .models import Busline
 
 
 class BuslineSearchResultView(View):
@@ -13,7 +13,7 @@ class BuslineSearchResultView(View):
         by the user then returns the result page and the list of results.
         """
         line_number = request.GET['busline']
-        buslines = BusinemeBusline.api_filter_startswith(line_number)
+        buslines = Busline.api_filter_startswith(line_number)
         count_busline = len(buslines)
         response = render_to_response("search_result.html",
                                       {'buslines': buslines,
