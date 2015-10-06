@@ -18,13 +18,13 @@ class Busline(BusinemeModel):
         return "{} - {}".format(self.line_number, self.description)
 
     @classmethod
-    def api_filter_startswith(cls, line_number):
+    def api_filter_contains(cls, line_number):
         r"""
         If API is up, send requisition and returns buslines with the \
         specified line number. If API is down, searches local database to\
         return buslines with the specified line number.
         """
-        objects = cls.objects.filter(line_number__startswith=line_number)
+        objects = cls.objects.filter(line_number__contains=line_number)
         return objects
 
 

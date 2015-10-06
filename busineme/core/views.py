@@ -13,11 +13,8 @@ class BuslineSearchResultView(View):
         by the user then returns the result page and the list of results.
         """
         line_number = request.GET['busline']
-        buslines = Busline.api_filter_startswith(line_number)
+        buslines = Busline.api_filter_contains(line_number)
         count_busline = len(buslines)
-        response = render_to_response("search_result.html",
-                                      {'buslines': buslines,
-                                       'count_busline': count_busline,
-                                       'searched_number': line_number},
+        response = render_to_response("search_result.html", locals(),
                                       context_instance=RequestContext(request))
         return response
