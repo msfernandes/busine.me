@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{busline.line_number}}{% endblock title %}
+{% block main_content %}
+<div class="busineme-content">
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 l4">
+        <div class="card">
+          <div class="card-content">
+            <h4><i class="material-icons">directions_bus</i> {{busline.line_number}}
+            <a href=""><i class="busineme-text text-red material-icons">favorite_border</i></a></h4>
+            <span class="card-title busineme-text text-blue">{% trans "Line Informations" %}</span>
+            <p><b>{% trans "Description" %}:</b> {{busline.description}}</p>
+            <p><b>{% trans "Via" %}:</b> {{busline.via}}</p>
+            <p><ul>
+              <li><b>{% trans "Terminals" %}</b></li>
+              <ul>
+                {% for terminal in busline.terminals.all %}
+                  <li>- {{terminal}}</li>
+                {% endfor %}
+              </ul>
+            </ul></p>
+            <p><b>{% trans "Fee" %}:</b> R$ {{busline.fee}}</p>
+            <p><b>{% trans "Route Size" %}:</b> {{busline.route_size}} km</p>
+            <p><b>{% trans "Company" %}:</b> {{busline.company}}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l8">
+        <p class="flow-text">{% trans "Last Activities" %}</p>
+        <hr>
+        <div class="row">
+          <div class="col s2">
+            {% load gravatar %}
+            <img class="responsive-img circle" src="{% gravatar_url user.email 70 %}" alt="avatar">
+          </div>
+          <div class="col s10">
+            <div class="row">
+              <div class="col s6 valign-wrapper">
+                <i class="material-icons valign">account_circle</i> {{user.username}}
+              </div>
+              <div class="col s6 valign-wrapper">
+                <i class="material-icons valign">stars</i> Beginner
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m4 valign-wrapper">
+                <i class="material-icons valign">insert_invitation</i>
+              </div>
+              <div class="col s12 m4 valign-wrapper">
+                <i class="material-icons valign">timer</i>
+              </div>
+              <div class="col s12 m4 valign-wrapper">
+                <a href="/" class="btn">{% trans "More..." %}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a class="btn-floating btn-large busineme orange">
+      <i class="large material-icons">place</i>
+    </a>
+  </div>
+</div>
+{% endblock main_content %}
