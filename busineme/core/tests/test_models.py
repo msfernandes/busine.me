@@ -22,5 +22,5 @@ class TestBusline(TestCase):
             "001 - route", self.busline.__str__())
 
     def test_filter_by_line_number(self):
-        bus = self.busline.api_filter_startswith('001')
+        bus = self.busline.api_filter_contains('001')
         self.assertEquals(bus[0], self.busline)
