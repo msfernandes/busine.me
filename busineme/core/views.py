@@ -1,11 +1,10 @@
+from .models import Busline, Favorite
+from authentication.models import BusinemeUser
 from django.contrib import messages
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from django.views.generic import View
-
-from authentication.models import BusinemeUser
-from .models import Busline, Favorite
 
 
 class BuslineSearchResultView(View):
@@ -64,3 +63,13 @@ class FavoriteBuslineView(View):
             return redirect('/')
         # Go back to previous page, i.e., search result page
         return redirect(http_referer)
+
+
+class BuslineProfileView(View):
+    http_method_names = [u'get']
+
+    def get(self, request, line_number):
+        busline = Busline.api_get(line_number)
+        response = render_to_response("busline_profile.html", locals(),
+                                      context_instance=RequestContext(request))
+        return response

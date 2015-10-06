@@ -29,6 +29,18 @@ class Busline(BusinemeModel):
         objects = cls.objects.filter(line_number__contains=line_number)
         return objects
 
+    @classmethod
+    def api_get(cls, line_number):
+        line_number = cls.adapt_line_number(line_number)
+        busline = cls.objects.get(line_number=line_number)
+        return busline
+
+    @classmethod
+    def adapt_line_number(cls, line_number):
+        if line_number.find('.') == -1:
+            line_number = '0.' + line_number
+        return line_number
+
 
 class Company(BusinemeModel):
 
