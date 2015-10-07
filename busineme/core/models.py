@@ -50,6 +50,7 @@ class Terminal(BusinemeModel):
     def __str__(self):
         return "{}".format(self.description)
 
+
 class Favorite(BusinemeModel):
 
     """Favorite Model."""
