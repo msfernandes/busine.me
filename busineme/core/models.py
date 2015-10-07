@@ -1,5 +1,7 @@
-from defaults.models import BusinemeModel
 from django.db import models
+
+from authentication.models import BusinemeUser
+from defaults.models import BusinemeModel
 
 
 class Busline(BusinemeModel):
@@ -47,3 +49,13 @@ class Terminal(BusinemeModel):
 
     def __str__(self):
         return "{}".format(self.description)
+
+class Favorite(BusinemeModel):
+
+    """Favorite Model."""
+
+    user = models.ForeignKey(BusinemeUser)
+    busline = models.ForeignKey('Busline')
+
+    def __str__(self):
+        return "{} - {}".format(self.user.username, self.busline.line_number)
