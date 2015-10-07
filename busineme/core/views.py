@@ -26,6 +26,6 @@ class BuslineSearchResultView(View):
             context = {'user_favorites': user_favorites}
 
         response = render_to_response("search_result.html", locals(),
-                                  context_instance=RequestContext(request,
-                                                                  context))
+                                      context_instance=RequestContext(request,
+                                                                      context))
         return response
