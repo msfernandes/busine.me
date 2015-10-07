@@ -51,4 +51,5 @@ class FavoriteBuslineView(View):
             favorite.busline = busline
             favorite.save()
 
-        return redirect('search_results')
+        # Go back to previous page, i.e., search result page
+        return redirect(request.META.get('HTTP_REFERER'))
