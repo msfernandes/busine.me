@@ -45,19 +45,22 @@ class FavoriteBuslineView(View):
 
         if favorite:
             favorite.delete()
-            messages.success(request, _('Deleted line from favorite lines'))
+            messages.success(request, _('Deleted line from favorite lines'),
+                             fail_silently=True)
         else:
             favorite = Favorite()
             favorite.user = user
             favorite.busline = busline
             favorite.save()
-            messages.success(request, _('Added line to favorite lines'))
+            messages.success(request, _('Added line to favorite lines'),
+                             fail_silently=True)
 
         http_referer = request.META.get('HTTP_REFERER', None)
 
         if not http_referer:
             messages.warning(request, _("Can't find previous page,"
-                                        " returning to home page"))
+                                        " returning to home page"),
+                             fail_silently=True)
             return redirect('/')
         # Go back to previous page, i.e., search result page
         return redirect(http_referer)
