@@ -24,10 +24,11 @@ $ sudo pip3 install -r requirements.txt
 $ cp settings/databases settings/databases.py
 $ cp settings/security settings/security.py
 ```
+### Population databases
 
 ```
-$ python3 manage.py makemigrations
-$ python3 manage.py migrate
-$ python3 manage.py makemigrations
-$ python3 manage.py runserver
+$ python3 manage.py shell
+$ from importer.parser import Parser
+$ p = Parser()
+$ p.import_data()
 ```
