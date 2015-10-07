@@ -36,9 +36,20 @@
 									<li class="collection-item"><b>{% trans "Company:" %}</b> {{busline.company|title}}</li>
 								</ul>
 							</div>
-							<div class="card-action right-align">
-								<a href="#">{% trans 'See more...' %}</a>
-							</div>
+							<div class="row">
+								<div class="col s6 card-action left-align">
+									{% if user.is_authenticated %}
+										{% if not busline in user_favorites %}
+											<a href="#" class="busineme-text text-red"><i class="material-icons">favorite_border</i></a>
+										{% else %}
+											<a href="#" class="busineme-text text-red"><i class="material-icons">favorite</i></a>
+										{% endif %}
+									{% endif %}
+								</div>
+								<div class="col s6 card-action right-align">
+									<a href="#">{% trans 'See more...' %}</a>
+								</div>
+						</div>
 						</div>
 					</div>
 				{% endfor %}
