@@ -1,4 +1,4 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.views.generic import View
 
@@ -17,15 +17,38 @@ class BuslineSearchResultView(View):
         buslines = Busline.api_filter_contains(line_number)
         count_busline = len(buslines)
 
-        context = {}
-
         if request.user.is_authenticated():
             user = request.user
             user_favorites = Favorite.objects.filter(user=user)
             user_favorites = [favorite.busline for favorite in user_favorites]
-            context = {'user_favorites': user_favorites}
 
         response = render_to_response("search_result.html", locals(),
-                                      context_instance=RequestContext(request,
-                                                                      context))
+                                      context_instance=RequestContext(request))
         return response
+
+
+class FavoriteBuslineView(View):
+    http_method_names = [u'get', u'post']
+
+    def get(self, request):
+        """
+        (Un)Favorite selected busline.
+        """
+        line_number = request.GET['line_number']
+        busline = Busline.objects.get(line_number=line_number)
+        user = request.user
+
+        print(user)
+        print(busline)
+
+        favorite = Favorite.objects.get_or_none(busline=busline, user=user)
+
+        if favorite:
+            favorite.delete()
+        else:
+            favorite = Favorite()
+            favorite.user = user
+            favorite.busline = busline
+            favorite.save()
+
+        return redirect('search_results')
