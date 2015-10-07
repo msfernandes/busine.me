@@ -1,5 +1,7 @@
+from django.contrib import messages
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
+from django.utils.translation import ugettext as _
 from django.views.generic import View
 
 from authentication.models import BusinemeUser
@@ -43,11 +45,19 @@ class FavoriteBuslineView(View):
 
         if favorite:
             favorite.delete()
+            messages.success(request, _('Deleted line from favorite lines'))
         else:
             favorite = Favorite()
             favorite.user = user
             favorite.busline = busline
             favorite.save()
+            messages.success(request, _('Added line to favorite lines'))
 
+        http_referer = request.META.get('HTTP_REFERER', None)
+
+        if not http_referer:
+            messages.warning(request, _("Can't find previous page,"
+                                        " returning to home page"))
+            return redirect('/')
         # Go back to previous page, i.e., search result page
-        return redirect(request.META.get('HTTP_REFERER'))
+        return redirect(http_referer)
