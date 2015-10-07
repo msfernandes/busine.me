@@ -2,6 +2,7 @@ from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.views.generic import View
 
+from authentication.models import BusinemeUser
 from .models import Busline, Favorite
 
 
@@ -36,10 +37,7 @@ class FavoriteBuslineView(View):
         """
         line_number = request.GET['line_number']
         busline = Busline.objects.get(line_number=line_number)
-        user = request.user
-
-        print(user)
-        print(busline)
+        user = BusinemeUser.objects.get(pk=request.user.id)
 
         favorite = Favorite.objects.get_or_none(busline=busline, user=user)
 
