@@ -127,7 +127,10 @@ class RegisterUserView(View):
     def post(self, request):
         form = BusinemeUserForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            user.set_password(form.cleaned_data['password'])
+            user.save()
+
             response = redirect(reverse('login'))
             username = form.cleaned_data['username']
             messages.success(
