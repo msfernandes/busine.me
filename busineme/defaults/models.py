@@ -2,7 +2,19 @@ from django.db import models
 from abc import abstractmethod
 
 
+class BusinemeModelManager(models.Manager):
+    use_for_related_fields = True
+
+    def get_or_none(self, **kwargs):
+        try:
+            return self.get(**kwargs)
+        except self.model.DoesNotExist:
+            return None
+
+
 class BusinemeModel(models.Model):
+    objects = BusinemeModelManager()
+
     class Meta:
         abstract = True
 

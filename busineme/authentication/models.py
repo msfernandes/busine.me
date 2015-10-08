@@ -1,5 +1,5 @@
 from defaults.models import BusinemeModel
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 
 
@@ -15,6 +15,7 @@ class BusinemeUser(BusinemeModel, AbstractUser):
     pontuation = models.IntegerField(default=0)
     rank = models.ForeignKey(RankPosition, null=True)
     deactivation_reason = models.CharField(max_length=255, null=True)
+    objects = UserManager()
 
     def save(self, *args, **kwargs):
         self.username = self.username.lower()
