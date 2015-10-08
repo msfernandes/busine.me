@@ -48,9 +48,22 @@
 									{% endif %}
 								</div>
 								<div class="col s6 card-action right-align">
-									<a href="/busline/{{busline.line_number}}/">{% trans 'See more...' %}</a>
+									<a class="modal-trigger waves-effect waves-light btn" href="#modalpost">{% trans 'Post' %}</a>
+									<a href="#">{% trans 'See more...' %}</a>
 								</div>
-							</div>
+
+								<!-- Modal Structure -->
+							  <div id="modalpost" class="modal modal-fixed-footer">
+							    <div class="modal-content">
+							      <h4>New Post</h4>
+							      <p>Teste</p>
+							    </div>
+							    <div class="modal-footer">
+							      <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Post</a>
+							    </div>
+							  </div>
+
+						</div>
 						</div>
 					</div>
 				{% endfor %}
