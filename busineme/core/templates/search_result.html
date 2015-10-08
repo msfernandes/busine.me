@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% block title %}Results{% endblock %}
-
 {% block main_content %}
 	<div class="busineme-content">
 		<div class="container">
@@ -41,17 +40,17 @@
 									{% if user.is_authenticated %}
 										{% if not busline in user_favorites %}
 											<a href="{% url 'favorite_busline' %}?line_number={{busline.line_number}}" class="busineme-text text-red">
-												<i class="material-icons">favorite_border</i></a>
+											<i class="material-icons">favorite_border</i></a>
 										{% else %}
 											<a href="{% url 'favorite_busline' %}?line_number={{busline.line_number}}" class="busineme-text text-red">
-												<i class="material-icons">favorite</i></a>
+											<i class="material-icons">favorite</i></a>
 										{% endif %}
 									{% endif %}
 								</div>
 								<div class="col s6 card-action right-align">
-									<a href="#">{% trans 'See more...' %}</a>
+									<a href="/busline/{{busline.line_number}}/">{% trans 'See more...' %}</a>
 								</div>
-						</div>
+							</div>
 						</div>
 					</div>
 				{% endfor %}
