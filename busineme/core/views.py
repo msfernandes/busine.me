@@ -78,3 +78,13 @@ class BuslineProfileView(View):
         response = render_to_response("busline_profile.html", locals(),
                                       context_instance=RequestContext(request))
         return response
+
+
+class BuslinePostView(View):
+    http_method_names = [u'get', u'post']
+
+    def get(self, request):
+        return redirect('/')
+
+    def post(self, request):
+        return redirect('/auth/login/')
