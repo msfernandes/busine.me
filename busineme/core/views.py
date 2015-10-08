@@ -84,7 +84,15 @@ class BuslinePostView(View):
     http_method_names = [u'get', u'post']
 
     def get(self, request):
-        return redirect('/')
+        line_number = request.GET['line_number']
+        busline = Busline.objects.get(line_number=line_number)
+        terminals = busline.terminals.all()
+        return render_to_response("post.html", locals(),
+                                  context_instance=RequestContext(request))
 
     def post(self, request):
-        return redirect('/auth/login/')
+        terminal = request.POST['terminal']
+        traffic = request.POST['traffic']
+        capacity = request.POST['capacity']
+
+        return redirect('/')
