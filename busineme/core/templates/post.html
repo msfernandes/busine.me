@@ -28,8 +28,12 @@
 					<p class="range-field">
 						<input type="range" name= 'capacity' value='capacity' id="capacity" min="0" max="5" />
 					</p>
+		        	<div class="input-field col s12">
+			          	<textarea name="comment" id="comment" class="materialize-textarea"></textarea>
+			          	<label for="comment">Comment</label>
+		        	</div>
 					<button class="btn waves-effect waves-light">{% trans 'Post' %}</button>
-					<!-- <a type="submit" class="waves-effect waves-green btn">{% trans 'Post' %}</a> -->
+					<input type="hidden" name="line_number" value="{{line_number}}">
 				</form>
 			</div>
 		</div>

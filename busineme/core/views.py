@@ -1,10 +1,11 @@
-from .models import Busline, Favorite
-from authentication.models import BusinemeUser
 from django.contrib import messages
 from django.shortcuts import render_to_response, redirect
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
 from django.views.generic import View
+
+from authentication.models import BusinemeUser
+from .models import Busline, Favorite, Post
 
 
 class BuslineSearchResultView(View):
@@ -91,8 +92,14 @@ class BuslinePostView(View):
                                   context_instance=RequestContext(request))
 
     def post(self, request):
-        terminal = request.POST['terminal']
-        traffic = request.POST['traffic']
-        capacity = request.POST['capacity']
+        post = Post()
+        post.terminal = request.POST['terminal']
+        post.traffic = request.POST['traffic']
+        post.capacity = request.POST['capacity']
+        post.comment = request.POST['comment']
+        line_number = request.POST['line_number']
+        post.busline = Busline.api_filter_contains(line_number)[0]
+        post.user_id = request.user.id
+        post.save()
 
         return redirect('/')
