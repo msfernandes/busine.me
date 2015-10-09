@@ -9,7 +9,13 @@
         <div class="card">
           <div class="card-content">
             <h4><i class="material-icons">directions_bus</i> {{busline.line_number}}
-            <a href=""><i class="busineme-text text-red material-icons">favorite_border</i></a></h4>
+            {% if user.is_authenticated %}
+              {% if not busline in user_favorites %}
+                <a href="{% url 'favorite_busline' %}?line_number={{busline.line_number}}"><i class="busineme-text text-red material-icons">favorite_border</i></a>
+              {% else %}
+                <a href="{% url 'favorite_busline' %}?line_number={{busline.line_number}}"><i class="busineme-text text-red material-icons">favorite</i></a>
+              {% endif %}
+            {% endif %}</h4>
             <span class="card-title busineme-text text-blue">{% trans "Line Informations" %}</span>
             <p><b>{% trans "Description" %}:</b> {{busline.description}}</p>
             <p><b>{% trans "Via" %}:</b> {{busline.via}}</p>

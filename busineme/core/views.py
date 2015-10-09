@@ -69,6 +69,11 @@ class BuslineProfileView(View):
     http_method_names = [u'get']
 
     def get(self, request, line_number):
+        if request.user.is_authenticated():
+            user = request.user
+            user_favorites = Favorite.objects.filter(user=user)
+            user_favorites = [favorite.busline for favorite in user_favorites]
+
         busline = Busline.api_get(line_number)
         response = render_to_response("busline_profile.html", locals(),
                                       context_instance=RequestContext(request))
