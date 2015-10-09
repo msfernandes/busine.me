@@ -99,9 +99,9 @@ class Post(BusinemeModel):
         return objects
 
     @classmethod
-    def api_filter_contains(cls, busline):
+    def api_filter_contains(cls, busline, limit=None):
         objects = Post.objects.filter(busline__id=busline.id).order_by(
-            '-date', '-time')
+            '-date', '-time')[:limit]
         return objects
 
     @classmethod
