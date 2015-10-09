@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Results{% endblock %}
+{% block main_content %}
+<div class="row">
+  <div class="col s2">
+    {% load gravatar %}
+    <img class="responsive-img circle" src="{% gravatar_url user.email 70 %}" alt="avatar">
+  </div>
+  <div class="col s10">
+    <div class="row">
+      <div class="col s6 valign-wrapper">
+        <i class="material-icons valign">account_circle</i> {{post.user.username}}
+      </div>
+      <div class="col s6 valign-wrapper">
+        <i class="material-icons valign">stars</i> Beginner
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 m4 valign-wrapper">
+        <i class="material-icons valign">insert_invitation</i> {{post.date}}
+      </div>
+      <div class="col s12 m4 valign-wrapper">
+        <i class="material-icons valign">timer</i> {{post.time}}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main_content %}

@@ -103,3 +103,15 @@ class BuslineProfileView(View):
         response = render_to_response("busline_profile.html", locals(),
                                       context_instance=RequestContext(request))
         return response
+
+
+class BuslinePostDetailView(View):
+    http_method_names = [u'get']
+
+    def get(self, request):
+        post_id = request.GET['post_id']
+        post = Post.api_get(post_id)
+
+        response = render_to_response("post_detail.html", locals(),
+                                      context_instance=RequestContext(request))
+        return response
