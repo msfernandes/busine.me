@@ -2674,7 +2674,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-light-blue {
+.busineme-text.text-light-blue, .text-light-blue.busineme-post-header {
   color: #80d5df !important;
 }
 
@@ -2684,7 +2684,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-blue {
+.busineme-text.text-blue, .text-blue.busineme-post-header {
   color: #2c82c9 !important;
 }
 
@@ -2694,7 +2694,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-green {
+.busineme-text.text-green, .text-green.busineme-post-header {
   color: #2cc990 !important;
 }
 
@@ -2704,7 +2704,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-light-grey {
+.busineme-text.text-light-grey, .text-light-grey.busineme-post-header {
   color: #edede4 !important;
 }
 
@@ -2714,7 +2714,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-yellow {
+.busineme-text.text-yellow, .text-yellow.busineme-post-header {
   color: #eee657 !important;
 }
 
@@ -2724,7 +2724,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-orange {
+.busineme-text.text-orange, .busineme-post-header {
   color: #fcb941 !important;
 }
 
@@ -2734,7 +2734,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-red {
+.busineme-text.text-red, .text-red.busineme-post-header {
   color: #ff6963 !important;
 }
 
@@ -2744,7 +2744,7 @@
 }
 
 /* line 393, ../sass/components/_color.scss */
-.busineme-text.text-dark-grey {
+.busineme-text.text-dark-grey, .text-dark-grey.busineme-post-header {
   color: #94846e !important;
 }
 
@@ -9022,13 +9022,13 @@ small {
   border-radius: 2px;
 }
 /* line 22, ../sass/components/_cards.scss */
-.card .card-title, .login-card .card-title, .busline-card .card-title, .search-card .card-title {
+.card .card-title, .login-card .card-title, .busline-card .card-title, .search-card .card-title, .card .busineme-post-header, .login-card .busineme-post-header, .busline-card .busineme-post-header, .search-card .busineme-post-header {
   color: #fff;
   font-size: 24px;
   font-weight: 300;
 }
 /* line 26, ../sass/components/_cards.scss */
-.card .card-title.activator, .login-card .card-title.activator, .busline-card .card-title.activator, .search-card .card-title.activator {
+.card .card-title.activator, .login-card .card-title.activator, .busline-card .card-title.activator, .search-card .card-title.activator, .card .activator.busineme-post-header, .login-card .activator.busineme-post-header, .busline-card .activator.busineme-post-header, .search-card .activator.busineme-post-header {
   cursor: pointer;
 }
 /* line 32, ../sass/components/_cards.scss */
@@ -9101,7 +9101,7 @@ small {
   width: 100%;
 }
 /* line 98, ../sass/components/_cards.scss */
-.card .card-image .card-title, .login-card .card-image .card-title, .busline-card .card-image .card-title, .search-card .card-image .card-title {
+.card .card-image .card-title, .login-card .card-image .card-title, .busline-card .card-image .card-title, .search-card .card-image .card-title, .card .card-image .busineme-post-header, .login-card .card-image .busineme-post-header, .busline-card .card-image .busineme-post-header, .search-card .card-image .busineme-post-header {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -9118,7 +9118,7 @@ small {
   color: inherit;
 }
 /* line 116, ../sass/components/_cards.scss */
-.card .card-content .card-title, .login-card .card-content .card-title, .busline-card .card-content .card-title, .search-card .card-content .card-title {
+.card .card-content .card-title, .login-card .card-content .card-title, .busline-card .card-content .card-title, .search-card .card-content .card-title, .card .card-content .busineme-post-header, .login-card .card-content .busineme-post-header, .busline-card .card-content .busineme-post-header, .search-card .card-content .busineme-post-header {
   line-height: 48px;
 }
 /* line 121, ../sass/components/_cards.scss */
@@ -9154,7 +9154,7 @@ small {
   display: none;
 }
 /* line 146, ../sass/components/_cards.scss */
-.card .card-reveal .card-title, .login-card .card-reveal .card-title, .busline-card .card-reveal .card-title, .search-card .card-reveal .card-title {
+.card .card-reveal .card-title, .login-card .card-reveal .card-title, .busline-card .card-reveal .card-title, .search-card .card-reveal .card-title, .card .card-reveal .busineme-post-header, .login-card .card-reveal .busineme-post-header, .busline-card .card-reveal .busineme-post-header, .search-card .card-reveal .busineme-post-header {
   cursor: pointer;
   display: block;
 }
@@ -12711,4 +12711,15 @@ button.picker__today:focus, button.picker__clear:focus, button.picker__close:foc
 /* line 55, ../sass/components/_busineme.scss */
 .busineme-footer {
   margin-top: 0rem !important;
+}
+
+/* line 60, ../sass/components/_busineme.scss */
+.busineme-post-header {
+  padding-top: 1rem;
+}
+
+/* line 67, ../sass/components/_busineme.scss */
+.loading-maps {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }

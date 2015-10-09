@@ -1,0 +1,39 @@
+{% load i18n %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN0jI53oW9-VtOw3AZvwGDOy8PfFgf4F4&signed_in=true&callback=initMap">
+</script>
+<script>
+  function initMap() {
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      var latitude = {{post.latitude}};
+      var longitude = {{post.longitude}};
+      var map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: latitude, lng: longitude},
+        zoom: 14
+      });
+      google.maps.event.addDomListener(window, 'load', initMap);
+      google.maps.event.addDomListener(window, "resize", function() {
+       var center = map.getCenter();
+       google.maps.event.trigger(map, "resize");
+       map.setCenter(center);
+      });
+      var pos = {
+        lat: latitude,
+        lng: longitude
+      };
+      marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        title: '{% trans "Post position" %}'
+      });
+
+      marker.setMap(map);
+
+      // } function() {
+      //   // Geolocation blocked
+      // });
+    } else {
+      // Browser does not support Geolocation
+    }
+  }
+</script>

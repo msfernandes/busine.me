@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}Results{% endblock %}
+{% block title %}{% trans "Results" %}{% endblock %}
 {% block main_content %}
 	<div class="busineme-content">
 		<div class="container">
@@ -13,9 +13,9 @@
 					<div class="col s12 m6">
 						<div class="card hoverable">
 							<div class="card-content">
-								<span class="card-title activator busineme-text text-blue">#{{busline.line_number}}
-								<i class="material-icons right">more_vert</i></span>
-								<hr>
+								<a href="{% url 'busline_profile' line_number=busline.line_number %}">
+								<span class="card-title busineme-text text-blue">#{{busline.line_number}}</a>
+								<i class="activator material-icons right">more_vert</i></span>
 								<ul class="collection">
 									<li class="collection-item truncate">{{busline.description}}</li>
 									<li class="collection-item truncate">{{busline.via}}</li>
@@ -45,10 +45,11 @@
 											<a href="{% url 'favorite_busline' %}?line_number={{busline.line_number}}" class="busineme-text text-red">
 											<i class="material-icons">favorite</i></a>
 										{% endif %}
+										<a href="{% url 'post_busline' %}?line_number={{busline.line_number}}"><i class="material-icons">place</i></a>
 									{% endif %}
 								</div>
 								<div class="col s6 card-action right-align">
-									<a href="/busline/{{busline.line_number}}/">{% trans 'See more...' %}</a>
+									<a href="{% url 'busline_profile' line_number=busline.line_number %}">{% trans 'See more...' %}</a>
 								</div>
 							</div>
 						</div>

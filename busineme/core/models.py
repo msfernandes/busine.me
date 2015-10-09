@@ -72,3 +72,39 @@ class Favorite(BusinemeModel):
 
     def __str__(self):
         return "{} - {}".format(self.user.username, self.busline.line_number)
+
+
+class Post(BusinemeModel):
+
+    """Post Model."""
+
+    comment = models.CharField(max_length=255)
+    latitude = models.CharField(max_length=100)
+    longitude = models.CharField(max_length=100)
+    traffic = models.IntegerField()
+    capacity = models.IntegerField()
+    busline = models.ForeignKey(Busline)
+    date = models.DateField(auto_now=True)
+    time = models.TimeField(auto_now=True)
+    user = models.ForeignKey(BusinemeUser)
+
+    def __str__(self):
+        return 'id: %s date: %s %s busline_id: %s' % (self.id, str(self.date),
+                                                      str(self.time),
+                                                      self.busline_id)
+
+    @classmethod
+    def api_all(cls):
+        objects = cls.objects.all()
+        return objects
+
+    @classmethod
+    def api_filter_contains(cls, busline):
+        objects = Post.objects.filter(busline__id=busline.id).order_by(
+            '-date', '-time')
+        return objects
+
+    @classmethod
+    def api_get(cls, post_id):
+        post = cls.objects.get(id=post_id)
+        return post
