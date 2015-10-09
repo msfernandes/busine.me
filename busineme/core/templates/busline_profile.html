@@ -36,34 +36,34 @@
       <div class="col s12 m6 l8">
         <p class="flow-text">{% trans "Last Activities" %}</p>
         {% for post in posts %}
-        <hr>
+          <hr>
           <div class="row">
-          <div class="col s2">
-            {% load gravatar %}
-            <img class="responsive-img circle" src="{% gravatar_url post.user.email 70 %}" alt="avatar">
-          </div>
-          <div class="col s10">
-            <div class="row">
-              <div class="col s6 valign-wrapper">
-                <i class="material-icons valign">account_circle</i> {{post.user.username}}
+            <div class="col s2">
+              {% load gravatar %}
+              <img class="responsive-img circle" src="{% gravatar_url post.user.email 70 %}" alt="avatar">
+            </div>
+            <div class="col s10">
+              <div class="row">
+                <div class="col s6 valign-wrapper">
+                  <i class="material-icons valign">account_circle</i> {{post.user.username}}
+                </div>
+                <div class="col s6 valign-wrapper">
+                  <i class="material-icons valign">stars</i> Beginner
+                </div>
               </div>
-              <div class="col s6 valign-wrapper">
-                <i class="material-icons valign">stars</i> Beginner
+              <div class="row">
+                <div class="col s12 m4 valign-wrapper">
+                  <i class="material-icons valign">insert_invitation</i> {{post.date}}
+                </div>
+                <div class="col s12 m4 valign-wrapper">
+                  <i class="material-icons valign">timer</i> {{post.time}}
+                </div>
+                <div class="col s12 m4 valign-wrapper">
+                  <a href="{% url 'post_detail' post_id=post.id %}" class="btn">{% trans "More..." %}</a>
+                </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col s12 m4 valign-wrapper">
-                <i class="material-icons valign">insert_invitation</i> {{post.date}}
-              </div>
-              <div class="col s12 m4 valign-wrapper">
-                <i class="material-icons valign">timer</i> {{post.time}}
-              </div>
-              <div class="col s12 m4 valign-wrapper">
-                <a href="{% url 'post_detail' post_id=post.id %}" class="btn">{% trans "More..." %}</a>
-              </div>
-            </div>
           </div>
-        </div>
         {% endfor %}
         <hr>
       </div>
