@@ -16,10 +16,10 @@
             <div class="col s6 card-action left-align">
               {% if not busline in user_favorites %}
                 <a href="{% url 'favorite_busline' %}?line_number={{busline.line_number}}" class="busineme-text text-red">
-                <i class="material-icons">favorite_border</i></a>
+                <i class="material-icons">favorite</i></a>
               {% else %}
                 <a href="{% url 'favorite_busline' %}?line_number={{busline.line_number}}" class="busineme-text text-red">
-                <i class="material-icons">favorite</i></a>
+                <i class="material-icons">favorite_border</i></a>
               {% endif %}
             </div>
             <div class="col s6 card-action right-align">
