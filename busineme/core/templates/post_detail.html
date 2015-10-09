@@ -8,8 +8,14 @@
         <div class="col s12 m6 l4">
           <div class="card">
             <div class="card-content">
-              <h4><i class="material-icons">directions_bus</i> <a href="{% url 'busline_profile' line_number=post.busline.line_number %}">{{post.busline.line_number}}</a>
-              <a href=""><i class="busineme-text text-red material-icons">favorite_border</i></a></h4>
+              <h4><i class="material-icons">directions_bus</i> {{post.busline.line_number}}
+              {% if user.is_authenticated %}
+                {% if not post.busline in user_favorites %}
+                  <a href="{% url 'favorite_busline' %}?line_number={{post.busline.line_number}}"><i class="busineme-text text-red material-icons">favorite_border</i></a>
+                {% else %}
+                  <a href="{% url 'favorite_busline' %}?line_number={{post.busline.line_number}}"><i class="busineme-text text-red material-icons">favorite</i></a>
+                {% endif %}
+              {% endif %}</h4>
               <span class="card-title busineme-text text-blue">{% trans "Line Informations" %}</span>
               <p><b>{% trans "Description" %}:</b> {{post.busline.description}}</p>
               <p><b>{% trans "Via" %}:</b> {{post.busline.via}}</p>

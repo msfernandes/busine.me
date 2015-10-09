@@ -112,6 +112,10 @@ class BuslinePostDetailView(View):
 
     def get(self, request, post_id):
         post = Post.api_get(post_id)
+        if request.user.is_authenticated():
+            user = request.user
+            user_favorites = Favorite.objects.filter(user=user)
+            user_favorites = [favorite.busline for favorite in user_favorites]
 
         response = render_to_response("post_detail.html", locals(),
                                       context_instance=RequestContext(request))
