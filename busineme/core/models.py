@@ -100,7 +100,8 @@ class Post(BusinemeModel):
 
     @classmethod
     def api_filter_contains(cls, busline):
-        objects = Post.objects.filter(busline__id=busline.id)
+        objects = Post.objects.filter(busline__id=busline.id).order_by(
+            '-date', '-time')
         return objects
 
     @classmethod
