@@ -1,0 +1,33 @@
+{% load i18n %}
+<script>
+  function initMap() {
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        $("#longitude").val(pos.lng);
+        $("#latitude").val(pos.lat);
+        $("#loading-maps").html('<p class="center">\
+                                <i class="material-icons">done</i>\
+                                <span>{% trans "Obtained position" %}</span></p>');
+      }, function() {
+        $("#loading-maps").html('<p class="center">\
+                                <i class="material-icons">info_outline</i>\
+                                <span>{% trans "Geolocation blocked" %}</span></p>');
+        $("#post_button").addClass("disabled");
+        $("#post_button").attr("disabled", true);
+      });
+    } else {
+      $("#loading-maps").html('<p class="center">\
+                              <i class="material-icons">highlight_off</i>\
+                              <span>{% trans "Browser does not support Geolocation" %}</span></p>');
+      $("#post_button").addClass("disabled");
+      $("#post_button").attr("disabled", true);
+    }
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAN0jI53oW9-VtOw3AZvwGDOy8PfFgf4F4&signed_in=true&callback=initMap">
+</script>

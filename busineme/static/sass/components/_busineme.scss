@@ -56,3 +56,15 @@
   @extend .page-footer;
   margin-top: 0rem !important;
 }
+
+.busineme-post-header {
+  @extend .card-title;
+  @extend .busineme-text;
+  @extend .text-orange;
+  padding-top: 1rem;
+}
+
+.loading-maps {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
