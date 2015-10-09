@@ -10,7 +10,7 @@
 				{% csrf_token %}
 					<h4>New Post</h4>
 				    <label>Browser Select</label>
-				    <select name="terminal" class="browser-default">
+				    <select name="terminal" class="browser-default" required>
 				      	<option value="" disabled selected>Choose Course</option>
 				      	{% for terminal in terminals %}
 				      		<option value="{{terminal}}">{{terminal}}</option>
