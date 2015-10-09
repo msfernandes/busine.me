@@ -31,7 +31,7 @@ class BuslineSearchResultView(View):
 
 
 class FavoriteBuslineView(View):
-    http_method_names = [u'get', u'post']
+    http_method_names = [u'get']
 
     def get(self, request):
         """
@@ -66,21 +66,6 @@ class FavoriteBuslineView(View):
         return redirect(http_referer)
 
 
-class BuslineProfileView(View):
-    http_method_names = [u'get']
-
-    def get(self, request, line_number):
-        if request.user.is_authenticated():
-            user = request.user
-            user_favorites = Favorite.objects.filter(user=user)
-            user_favorites = [favorite.busline for favorite in user_favorites]
-
-        busline = Busline.api_get(line_number)
-        response = render_to_response("busline_profile.html", locals(),
-                                      context_instance=RequestContext(request))
-        return response
-
-
 class BuslinePostView(View):
     http_method_names = [u'get', u'post']
 
@@ -98,8 +83,23 @@ class BuslinePostView(View):
         post.capacity = request.POST['capacity']
         post.comment = request.POST['comment']
         line_number = request.POST['line_number']
-        post.busline = Busline.api_filter_contains(line_number)[0]
+        post.busline = Busline.api_get(line_number)
         post.user_id = request.user.id
         post.save()
 
         return redirect('/')
+
+
+class BuslineProfileView(View):
+    http_method_names = [u'get']
+
+    def get(self, request, line_number):
+        if request.user.is_authenticated():
+            user = request.user
+            user_favorites = Favorite.objects.filter(user=user)
+            user_favorites = [favorite.busline for favorite in user_favorites]
+        busline = Busline.api_get(line_number)
+        posts = Post.api_filter_contains(busline)
+        response = render_to_response("busline_profile.html", locals(),
+                                      context_instance=RequestContext(request))
+        return response

@@ -97,3 +97,8 @@ class Post(BusinemeModel):
     def api_all(cls):
         objects = cls.objects.all()
         return objects
+
+    @classmethod
+    def api_filter_contains(cls, busline):
+        objects = Post.objects.filter(busline__id=busline.id)
+        return objects

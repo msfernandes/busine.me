@@ -2,20 +2,19 @@
 {% load i18n %}
 {% block title %}Results{% endblock %}
 {% block main_content %}
-
 	<div class="container">
 		<div class="row">
 			<div class="col s12 offset-m2 m8 offset-l3 l6 center">
 				<form action="{% url 'post_busline' %}" method="POST" id="post_form">
-				{% csrf_token %}
+					{% csrf_token %}
 					<h4>New Post</h4>
-				    <label>Browser Select</label>
-				    <select name="terminal" class="browser-default" required>
-				      	<option value="" disabled selected>Choose Course</option>
-				      	{% for terminal in terminals %}
-				      		<option value="{{terminal}}">{{terminal}}</option>
+					<label>Browser Select</label>
+					<select name="terminal" class="browser-default" required>
+						<option value="" disabled selected>Choose Course</option>
+						{% for terminal in terminals %}
+							<option value="{{terminal}}">{{terminal}}</option>
 						{% endfor %}
-				    </select>
+					</select>
 					<h5>Traffic</h5>
 					<p class="left">Free</p>
 					<p class="right">Stoped</p>
@@ -28,12 +27,14 @@
 					<p class="range-field">
 						<input type="range" name= 'capacity' value='capacity' id="capacity" min="0" max="5" />
 					</p>
-		        	<div class="input-field col s12">
-			          	<textarea name="comment" id="comment" class="materialize-textarea"></textarea>
-			          	<label for="comment">Comment</label>
-		        	</div>
+					<div class="input-field col s12">
+						<textarea name="comment" id="comment" class="materialize-textarea"></textarea>
+						<label for="comment">Comment</label>
+					</div>
 					<button class="btn waves-effect waves-light">{% trans 'Post' %}</button>
 					<input type="hidden" name="line_number" value="{{line_number}}">
+					<input type="hidden" name="codigo_longitude" id="id_longitude" value="">
+					<input type="hidden" name="codigo_latitude" id="id_latitude" value="">
 				</form>
 			</div>
 		</div>
