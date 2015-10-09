@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
-{% block title %}Post {{busline.line_number}}{% endblock %}
+{% block title %}{% trans "Post" %} {{busline.line_number}}{% endblock %}
 {% block main_content %}
 	<div class="busineme-content">
 		<div class="container">
@@ -13,7 +13,7 @@
 								{% csrf_token %}
 								<select name="terminal" class="browser-default" required>
 									<option value="" disabled selected>{% trans "Choose Course" %}</option>
-									{% for terminal in terminals %}
+									{% for terminal in busline.terminals.all %}
 										<option value="{{terminal}}">{{terminal}}</option>
 									{% endfor %}
 								</select>

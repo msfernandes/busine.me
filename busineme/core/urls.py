@@ -24,6 +24,6 @@ urlpatterns = [
     url(r'^post/busline/$', login_required(BuslinePostView.as_view()),
         name="post_busline"),
 
-    url(r'^post/detail/$', BuslinePostDetailView.as_view(),
+    url(r'^post/(?P<post_id>[0-9]+)/$', BuslinePostDetailView.as_view(),
         name="post_detail")
 ]

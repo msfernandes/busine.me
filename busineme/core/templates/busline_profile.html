@@ -59,7 +59,7 @@
                 <i class="material-icons valign">timer</i> {{post.time}}
               </div>
               <div class="col s12 m4 valign-wrapper">
-                <a href="{% url 'post_detail' %}?post_id={{post.id}}" class="btn">{% trans "More..." %}</a>
+                <a href="{% url 'post_detail' post_id=post.id %}" class="btn">{% trans "More..." %}</a>
               </div>
             </div>
           </div>
@@ -70,7 +70,8 @@
     </div>
   </div>
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a class="btn-floating btn-large busineme orange">
+    <a href="{% url 'post_busline' %}?line_number={{busline.line_number}}"
+      class="btn-floating btn-large busineme orange">
       <i class="large material-icons">place</i>
     </a>
   </div>
