@@ -29,4 +29,4 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-API_URL = 'http://localhost:5000/api/v1/'
+API_URL = 'http://127.0.0.1:5000/'

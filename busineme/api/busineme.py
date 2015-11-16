@@ -16,7 +16,16 @@ class TemplateAPI(object):
 
     # Template Method
     def filter(self, **kwargs):
-        pass
+        """
+        Send requisition to get buslines depending on the arguments. \
+        This will be handled by the API, so only certain arguments names and \
+        values can be handled.
+        """
+        url = self.url + '?' 
+        for arg, value in kwargs.items():
+            url += arg + '=' + value + '&'
+        data = requests.get(url)
+        return self.get_list(data.json())
 
     def url(self):
         raise NotImplementedError()
@@ -32,16 +41,19 @@ class TemplateAPI(object):
 
     def json_to_object(self, json_obj, clz):
         obj = clz()
-        for attribute in json_obj.keys():
-            if attribute in obj.__dict__.keys():
-                setattr(obj, attribute, json_obj[attribute])
+        if json_obj is not None:
+            for attribute in json_obj.keys():
+                if attribute in obj.__dict__.keys():
+                    setattr(obj, attribute, json_obj[attribute])
         return obj
 
 
 class BuslineAPI(TemplateAPI):
 
+
+
     def url(self):
-        return urljoin(settings.API_URL, 'busline')
+        return urljoin(settings.API_URL, 'buslines')
 
     def api_model(self):
         return Busline
