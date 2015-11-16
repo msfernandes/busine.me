@@ -63,9 +63,6 @@ class BuslineAPI(TemplateAPI):
         for attribute in json_obj.keys():
             if attribute in obj.__dict__.keys():
                 if attribute == 'company':
-                    print(attribute)
-                    print(json_obj[attribute])
-                    print(super().json_to_object(json_obj[attribute], Company))
                     setattr(obj, attribute,
                             super().json_to_object(json_obj[attribute],
                                                    Company))
