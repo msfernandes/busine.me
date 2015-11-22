@@ -3,7 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import TemplateView
 
 from .views import (BuslineSearchResultView, FavoriteBuslineView,
-                    BuslineProfileView, BuslinePostView, BuslinePostDetailView)
+                    BuslineProfileView, BuslinePostView, BuslinePostDetailView,
+                    BuslineReviewView)
 
 urlpatterns = [
     url(r'^search/busline/$', BuslineSearchResultView.as_view(),
@@ -25,5 +26,8 @@ urlpatterns = [
         name="post_busline"),
 
     url(r'^post/(?P<post_id>[0-9]+)/$', BuslinePostDetailView.as_view(),
-        name="post_detail")
+        name="post_detail"),
+
+    url(r'^review/(?P<last_post_id>[0-9]+)/$', BuslineReviewView.as_view(),
+        name="review")
 ]

@@ -73,12 +73,12 @@ class BuslinePostView(View):
         line_number = request.GET['line_number']
         busline = get_object_or_404(Busline, line_number=line_number)
         try:
-            post_last = Post.api_last(busline.id)
+            last_post = Post.api_last(busline.id)
         except:
-            post_last = None
-        print(post_last)
+            last_post = None
+        print(locals())
         return render_to_response("post.html", locals(),
-                                      context_instance=RequestContext(request))
+                                  context_instance=RequestContext(request))
 
     def post(self, request):
         post = Post()
@@ -123,5 +123,21 @@ class BuslinePostDetailView(View):
             user_favorites = [favorite.busline for favorite in user_favorites]
 
         response = render_to_response("post_detail.html", locals(),
+                                      context_instance=RequestContext(request))
+        return response
+
+
+class BuslineReviewView(View):
+    http_method_names = [u'get', u'post']
+
+    def get(self, request, last_post_id):
+        post = Post.api_get(last_post_id)
+
+        if request.user.is_authenticated():
+            user = request.user
+            user_favorites = Favorite.objects.filter(user=user)
+            user_favorites = [favorite.busline for favorite in user_favorites]
+
+        response = render_to_response("review.html", locals(),
                                       context_instance=RequestContext(request))
         return response

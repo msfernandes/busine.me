@@ -51,10 +51,14 @@
 										</div>
 									</div>
 								</div>
-								<button id="post_button" class="btn">{% trans 'Post' %}</button>
 								<input type="hidden" name="line_number" value="{{line_number}}">
 								<input type="hidden" name="longitude" id="longitude" value="">
 								<input type="hidden" name="latitude" id="latitude" value="">
+								{% if last_post %}
+								<a href="{% url 'review' last_post_id=last_post.id %}" class="btn">{% trans "Review and Post" %}</a>
+								{% else %}
+								<button id="post_button" class="btn">{% trans 'Post' %}</button>
+								{% endif %}
 							</form>
 						</div>
 					</div>
