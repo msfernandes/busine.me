@@ -89,16 +89,24 @@ class BuslineAPI(TemplateAPI):
 class CompanyAPI(TemplateAPI):
 
     def url(self):
-        return urljoin(settings.API_URL, 'company')
+        return urljoin(settings.API_URL, 'companies')
 
     def api_model(self):
         return Company
+
+class PostAPI(TemplateAPI):
+
+    def url(self):
+        return urljoin(settings.API_URL, 'posts')
+
+    def api_model(self):
+        return Terminal
 
 
 class TerminalAPI(TemplateAPI):
 
     def url(self):
-        return urljoin(settings.API_URL, 'terminal')
+        return urljoin(settings.API_URL, 'terminals')
 
     def api_model(self):
         return Terminal
