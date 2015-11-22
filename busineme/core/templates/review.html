@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Post" %}{% endblock %}
+{% block main_content %}
+  <div class="busineme-content">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6 l4">
+          <div class="card">
+            <div class="card-content">
+              <h4><i class="material-icons">directions_bus</i> {{post.busline.line_number}}
+              {% if user.is_authenticated %}
+                {% if not post.busline in user_favorites %}
+                  <a href="{% url 'favorite_busline' %}?line_number={{post.busline.line_number}}"><i class="busineme-text text-red material-icons">favorite_border</i></a>
+                {% else %}
+                  <a href="{% url 'favorite_busline' %}?line_number={{post.busline.line_number}}"><i class="busineme-text text-red material-icons">favorite</i></a>
+                {% endif %}
+              {% endif %}</h4>
+              <span class="card-title busineme-text text-blue">{% trans "Line Informations" %}</span>
+              <p><b>{% trans "Description" %}:</b> {{post.busline.description}}</p>
+              <p><b>{% trans "Via" %}:</b> {{post.busline.via}}</p>
+              <p><ul>
+                <li><b>{% trans "Terminals" %}</b></li>
+                <ul>
+                  {% for terminal in post.busline.terminals.all %}
+                    <li>- {{terminal}}</li>
+                  {% endfor %}
+                </ul>
+              </ul></p>
+              <p><b>{% trans "Fee" %}:</b> R$ {{post.busline.fee}}</p>
+              <p><b>{% trans "Route Size" %}:</b> {{post.busline.route_size}} km</p>
+              <p><b>{% trans "Company" %}:</b> {{post.busline.company}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col s12 m6 l8">
+          <div class="card">
+            <div class="card-content">
+            <h3>Please Review This post!</h3>
+              <div class="row">
+                <div class="col s3 m2">
+                  {% load gravatar %}
+                  <img class="responsive-img circle" src="{% gravatar_url post.user.email 70 %}" alt="avatar">
+                </div>
+                <div class="col s9 m10">
+                  <p><b>{{post.user.username}}</b></p>
+                  <p>{{post.user.rank.description}}</p>
+                </div>
+              </div>
+              <div class="row center">
+                <div class="col s6 ">
+                  <span><i class="material-icons">insert_invitation</i> {{post.date}}</span>
+                </div>
+                <div class="col s6">
+                  <span><i class="material-icons">timer</i> {{post.time}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="responsive-img center">
+                  <div id="map" style="width:100%;height:200px;"></div>
+                </div>
+              </div>
+              <div class="row">
+                <p class="busineme-post-header">{% trans "Traffic" %}</p>
+                <p><span class="left">{% trans "Free" %}</span>
+                <span class="right">{% trans "Stoped" %}</span></p>
+                <div class="progress">
+                  <div class="determinate" style="width: {{post.traffic}}%"></div>
+                </div>
+              </div>
+              <div class="row">
+                <p class="busineme-post-header">{% trans "Capacity" %}</p>
+                <p><span class="left">{% trans "Empty" %}</span>
+                <span class="right">{% trans "Full" %}</span></p>
+                <div class="progress">
+                  <div class="determinate" style="width: {{post.capacity}}%"></div>
+                </div>
+              </div>
+              <div class="row">
+                <p class="busineme-post-header">{% trans "Comments" %}</p>
+                <p class="flow-text center">{{post.comment|default:'---'}}</p>
+              </div>
+              <div class="row">
+                <div class="col card-action left-align s6">
+                  <a class="busineme-text text-red">
+                  <i class="material-icons">thumb_down</i></a>
+                </div>
+                <div class="col card-action right-align s6">
+                  <a class="busineme-text text-green">
+                  <i class="material-icons">thumb_up</i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock main_content %}
+{% block footer_scripts %}
+  {% include "post_detail_scripts.html" %}
+{% endblock footer_scripts %}

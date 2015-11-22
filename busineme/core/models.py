@@ -108,9 +108,18 @@ class Post(BusinemeModel):
     def api_get(cls, post_id):
         post = cls.objects.get(id=post_id)
         return post
- 
+
     @classmethod
     def api_last(cls, busline_id):
         last_post = cls.objects.filter(
-                    busline_id=busline_id).order_by("-date", "-time")[0]
+            busline_id=busline_id).order_by("-date", "-time")[0]
         return last_post
+
+
+class Review(BusinemeModel):
+    date = models.DateField(auto_now=True)
+    time = models.TimeField(auto_now=True)
+
+    def __unicode__(self):
+        """Return comment of the review."""
+        return self.comment
