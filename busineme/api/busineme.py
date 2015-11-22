@@ -27,6 +27,11 @@ class TemplateAPI(object):
         data = requests.get(url)
         return self.get_list(data.json())
 
+    def get(self, id):
+        url = self.url + id
+        data = requests.get(url)
+        return self.get_list(data.json())
+
     def url(self):
         raise NotImplementedError()
 
