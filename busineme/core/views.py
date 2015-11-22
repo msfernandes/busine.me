@@ -72,8 +72,13 @@ class BuslinePostView(View):
     def get(self, request):
         line_number = request.GET['line_number']
         busline = get_object_or_404(Busline, line_number=line_number)
+        try:
+            post_last = Post.api_last(busline.id)
+        except:
+            post_last = None
+        print(post_last)
         return render_to_response("post.html", locals(),
-                                  context_instance=RequestContext(request))
+                                      context_instance=RequestContext(request))
 
     def post(self, request):
         post = Post()

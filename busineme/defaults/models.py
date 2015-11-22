@@ -50,3 +50,7 @@ class BusinemeModel(models.Model):
     @abstractmethod
     def api_filter_contains(cls, **kwargs):
         raise NotImplementedError()
+    @classmethod
+    @abstractmethod
+    def api_last(cls, **kwargs):
+        raise NotImplementedError()

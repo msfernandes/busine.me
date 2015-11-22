@@ -129,6 +129,7 @@ class RegisterUserView(View):
         if form.is_valid():
             user = form.save()
             user.set_password(form.cleaned_data['password'])
+            
             user.save()
 
             response = redirect(reverse('login'))
