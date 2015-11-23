@@ -16,7 +16,21 @@ class TemplateAPI(object):
 
     # Template Method
     def filter(self, **kwargs):
-        pass
+        """
+        Send requisition to get buslines depending on the arguments. \
+        This will be handled by the API, so only certain arguments names and \
+        values can be handled.
+        """
+        url = self.url + '?' 
+        for arg, value in kwargs.items():
+            url += arg + '=' + value + '&'
+        data = requests.get(url)
+        return self.get_list(data.json())
+
+    def get(self, id):
+        url = self.url + id
+        data = requests.get(url)
+        return self.get_list(data.json())
 
     def url(self):
         raise NotImplementedError()
@@ -32,16 +46,19 @@ class TemplateAPI(object):
 
     def json_to_object(self, json_obj, clz):
         obj = clz()
-        for attribute in json_obj.keys():
-            if attribute in obj.__dict__.keys():
-                setattr(obj, attribute, json_obj[attribute])
+        if json_obj is not None:
+            for attribute in json_obj.keys():
+                if attribute in obj.__dict__.keys():
+                    setattr(obj, attribute, json_obj[attribute])
         return obj
 
 
 class BuslineAPI(TemplateAPI):
 
+
+
     def url(self):
-        return urljoin(settings.API_URL, 'busline')
+        return urljoin(settings.API_URL, 'buslines')
 
     def api_model(self):
         return Busline
@@ -51,9 +68,6 @@ class BuslineAPI(TemplateAPI):
         for attribute in json_obj.keys():
             if attribute in obj.__dict__.keys():
                 if attribute == 'company':
-                    print(attribute)
-                    print(json_obj[attribute])
-                    print(super().json_to_object(json_obj[attribute], Company))
                     setattr(obj, attribute,
                             super().json_to_object(json_obj[attribute],
                                                    Company))
@@ -75,16 +89,24 @@ class BuslineAPI(TemplateAPI):
 class CompanyAPI(TemplateAPI):
 
     def url(self):
-        return urljoin(settings.API_URL, 'company')
+        return urljoin(settings.API_URL, 'companies')
 
     def api_model(self):
         return Company
+
+class PostAPI(TemplateAPI):
+
+    def url(self):
+        return urljoin(settings.API_URL, 'posts')
+
+    def api_model(self):
+        return Terminal
 
 
 class TerminalAPI(TemplateAPI):
 
     def url(self):
-        return urljoin(settings.API_URL, 'terminal')
+        return urljoin(settings.API_URL, 'terminals')
 
     def api_model(self):
         return Terminal

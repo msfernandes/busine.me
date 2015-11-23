@@ -2,7 +2,7 @@ from django.db import models
 
 from authentication.models import BusinemeUser
 from defaults.models import BusinemeModel
-
+from api.busineme import BuslineAPI, PostAPI
 
 class Busline(BusinemeModel):
 
@@ -26,7 +26,11 @@ class Busline(BusinemeModel):
         specified line number. If API is down, searches local database to\
         return buslines with the specified line number.
         """
-        objects = cls.objects.filter(line_number__contains=line_number)
+        try:
+            api = BuslineAPI()
+            objects = api.filter(line_number__contains=line_number)
+        except:
+            objects = cls.objects.filter(line_number__contains=line_number)
         return objects
 
     @classmethod
@@ -100,8 +104,15 @@ class Post(BusinemeModel):
 
     @classmethod
     def api_filter_contains(cls, busline, limit=None):
-        objects = Post.objects.filter(busline__id=busline.id).order_by(
+        try:
+            api = PostAPI()
+            busline_id = str(busline.id)
+            objects = api.filter(busline__id=busline_id).order_by(
             '-date', '-time')[:limit]
+        except:
+            objects = Post.objects.filter(busline__id=busline.id).order_by(
+            '-date', '-time')[:limit]
+
         return objects
 
     @classmethod
